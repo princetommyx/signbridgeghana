@@ -70,3 +70,5 @@ src/assets/promotional/about/android/*.png
 package-lock.json
 bun.lockb
 bun.lock
+
+.claude/
