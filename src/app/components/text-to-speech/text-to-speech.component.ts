@@ -16,7 +16,7 @@ export class TextToSpeechComponent implements OnInit, OnDestroy, OnChanges {
   @Input() text = '';
 
   voices: SpeechSynthesisVoice[] = [];
-  isSupported = false;
+  isSupported = 'speechSynthesis' in globalThis && 'SpeechSynthesisUtterance' in globalThis;
   isSpeaking = false;
 
   // SpeechSynthesisUtterance is not supported on Android native build
@@ -38,6 +38,10 @@ export class TextToSpeechComponent implements OnInit, OnDestroy, OnChanges {
       this.setVoice();
     };
     voicesLoaded(); // In case voices are already loaded
+
+    if (this.voices.length === 0) {
+      setTimeout(voicesLoaded, 250);
+    }
 
     // Safari does not support speechSynthesis events
     if ('addEventListener' in globalThis.speechSynthesis) {
@@ -74,7 +78,7 @@ export class TextToSpeechComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   setVoice(): void {
-    this.isSupported = false;
+    this.isSupported = !!this.speech;
 
     if (this.voices.length === 0) {
       return;
@@ -94,10 +98,18 @@ export class TextToSpeechComponent implements OnInit, OnDestroy, OnChanges {
       this.isSupported = true;
       return;
     }
+
+    this.isSupported = true;
   }
 
   play(): void {
+    if (!this.speech) {
+      return;
+    }
+
     this.speech.text = this.text;
+    this.speech.lang = this.lang;
+    globalThis.speechSynthesis.cancel();
     globalThis.speechSynthesis.speak(this.speech);
   }
 

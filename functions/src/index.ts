@@ -11,6 +11,7 @@ import {logConsoleMemory} from './utils/memory';
 import {FirebaseDatabase} from '@firebase/database-types';
 import {textNormalizationFunctions} from './text-normalization/controller';
 import {gatewayFunction} from './gateway/controller';
+import {geminiChatFunctions} from './chatbot/controller';
 
 logConsoleMemory(process.env.NODE_ENV === 'production' ? functions.logger : console);
 
@@ -20,6 +21,7 @@ const storage = admin.storage() as any;
 module.exports = {
   translate: {
     gateway: gatewayFunction,
+    geminiChat: geminiChatFunctions(),
     prerender: prerenderFunctions(),
     textToText: textToTextFunctions(database, storage),
     textNormalization: textNormalizationFunctions(database),

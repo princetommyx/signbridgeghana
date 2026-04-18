@@ -1,8 +1,14 @@
 <ion-header [translucent]="true">
   <app-announcement-banner />
-  <ion-toolbar>
+  <ion-toolbar class="translate-toolbar">
     <ion-buttons slot="primary">
-      <ion-button routerLink="/about" queryParamsHandling="preserve" color="primary" shape="round" fill="solid">
+      <ion-button
+        routerLink="/about"
+        queryParamsHandling="preserve"
+        color="primary"
+        shape="round"
+        fill="solid"
+        class="toolbar-cta">
         {{ 'landing.about.title' | transloco }}
       </ion-button>
     </ion-buttons>
@@ -11,7 +17,13 @@
     </ion-title>
     <ion-buttons slot="secondary">
       @for (page of pages; track page.key) {
-        <ion-button [routerLink]="page.route" queryParamsHandling="preserve" fill="solid" color="light" shape="round">
+        <ion-button
+          [routerLink]="page.route"
+          queryParamsHandling="preserve"
+          fill="solid"
+          color="light"
+          shape="round"
+          class="toolbar-link">
           {{ 'landing.' + page.key + '.title' | transloco }}
         </ion-button>
       }
@@ -20,42 +32,68 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="container">
-    <div id="input-mode-group">
-      @if (spokenToSigned) {
-        <app-translate-input-button mode="text" icon="language" />
-      } @else {
-        <app-translate-input-button mode="webcam" icon="videocam" />
-        <app-translate-input-button mode="upload" icon="cloud-upload" />
-      }
-      <div class="disclaimer">
-        <ion-icon name="information-circle-outline" class="disclaimer-icon"></ion-icon>
-        <span class="disclaimer-text">
-          By using the sign Translate tool, you agree to our
-          <a href="/legal/privacy" target="_blank" class="disclaimer-link">Privacy Policy</a>
-          and
-          <a href="/legal/terms" target="_blank" class="disclaimer-link">Terms of Use</a>.
-        </span>
-      </div>
-    </div>
+  <div class="translate-shell">
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+    <div class="mesh-pattern"></div>
 
-    <app-drop-pose-file>
-      <div id="translation-card">
-        <app-language-selectors />
-
-        <div id="content">
+    <div class="container">
+      <section class="hero-panel">
+        <div>
+          <p class="eyebrow">Live Language Bridge</p>
+          <h1>Translate conversation into expressive sign, in real time.</h1>
+          <p class="hero-copy">
+            Switch modes instantly, capture from webcam or text, and review generated poses in one focused workspace.
+          </p>
+        </div>
+        <div class="hero-mode" [class.signed-mode]="!spokenToSigned">
           @if (spokenToSigned) {
-            <!-- Spoken to sign requires a text input and video output -->
-            <app-spoken-to-signed />
+            <span>Mode: Spoken to Sign</span>
           } @else {
-            <!-- Sign to spoken requires a video input and text output -->
-            <app-signed-to-spoken />
+            <span>Mode: Sign to Spoken</span>
           }
         </div>
-      </div>
-    </app-drop-pose-file>
+      </section>
 
-    <app-send-feedback />
+      <div id="input-mode-group">
+        @if (spokenToSigned) {
+          <app-translate-input-button mode="text" icon="language" />
+        } @else {
+          <app-translate-input-button mode="webcam" icon="videocam" />
+          <app-translate-input-button mode="upload" icon="cloud-upload" />
+        }
+        <div class="disclaimer">
+          <ion-icon name="information-circle-outline" class="disclaimer-icon"></ion-icon>
+          <span class="disclaimer-text">
+            By using the sign Translate tool, you agree to our
+            <a href="/legal/privacy" target="_blank" class="disclaimer-link">Privacy Policy</a>
+            and
+            <a href="/legal/terms" target="_blank" class="disclaimer-link">Terms of Use</a>.
+          </span>
+        </div>
+      </div>
+
+      <app-drop-pose-file>
+        <div id="translation-card">
+          <app-language-selectors />
+
+          <div id="content">
+            @if (spokenToSigned) {
+              <!-- Spoken to sign requires a text input and video output -->
+              <app-spoken-to-signed />
+            } @else {
+              <!-- Sign to spoken requires a video input and text output -->
+              <app-signed-to-spoken />
+            }
+          </div>
+        </div>
+      </app-drop-pose-file>
+
+      <app-send-feedback class="feedback-slot" />
+    </div>
+
+    <app-landing-footer />
   </div>
-  <app-landing-footer />
+
+  <app-chatbot-widget></app-chatbot-widget>
 </ion-content>

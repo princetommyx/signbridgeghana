@@ -1,0 +1,45 @@
+<div class="chatbot-root" [class.open]="isOpen">
+  <ion-button class="chatbot-trigger" (click)="toggle()" shape="round" color="primary" [attr.aria-expanded]="isOpen">
+    {{ isOpen ? 'Close chat' : 'Ask AI assistant' }}
+  </ion-button>
+
+  @if (isOpen) {
+    <section class="chatbot-panel" aria-label="Gemini assistant chat panel">
+      <header class="chatbot-header">
+        <h2>AI Assistant</h2>
+        <p>Powered by Gemini</p>
+      </header>
+
+      <div class="chatbot-messages" #messagesList>
+        @for (message of messages; track $index) {
+          <article
+            class="chatbot-message"
+            [class.user]="message.role === 'user'"
+            [class.assistant]="message.role === 'assistant'">
+            <p>{{ message.text }}</p>
+          </article>
+        }
+
+        @if (isSending) {
+          <article class="chatbot-message assistant typing">
+            <p>Thinking...</p>
+          </article>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <p class="chatbot-error">{{ errorMessage }}</p>
+      }
+
+      <div class="chatbot-composer">
+        <textarea
+          rows="2"
+          [(ngModel)]="inputText"
+          (keydown)="onKeydown($event)"
+          placeholder="Ask anything about translation, signs, or usage..."
+          [disabled]="isSending"></textarea>
+        <ion-button (click)="send()" [disabled]="!canSend">Send</ion-button>
+      </div>
+    </section>
+  }
+</div>

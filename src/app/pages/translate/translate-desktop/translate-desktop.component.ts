@@ -17,6 +17,7 @@ import {RouterLink} from '@angular/router';
 import {LogoComponent} from '../../../components/logo/logo.component';
 import {AnnouncementBannerComponent} from '../../../components/announcement-banner/announcement-banner.component';
 import {LandingFooterComponent} from '../../landing/landing-footer/landing-footer.component';
+import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
 
 @Component({
   selector: 'app-translate-desktop',
@@ -41,6 +42,7 @@ import {LandingFooterComponent} from '../../landing/landing-footer/landing-foote
     LogoComponent,
     AnnouncementBannerComponent,
     LandingFooterComponent,
+    ChatbotWidgetComponent,
   ],
 })
 export class TranslateDesktopComponent extends BaseComponent implements OnInit {

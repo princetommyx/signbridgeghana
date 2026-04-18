@@ -1,0 +1,195 @@
+.chatbot-root {
+  bottom: 14px;
+  position: fixed;
+  right: 14px;
+  z-index: 40;
+
+  &.open {
+    z-index: 45;
+  }
+}
+
+.chatbot-trigger {
+  --border-radius: 999px;
+  --box-shadow: 0 10px 22px rgba(8, 42, 73, 0.26);
+  font-weight: 700;
+}
+
+.chatbot-panel {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(20, 44, 79, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 26px 60px rgba(15, 35, 64, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  max-height: min(72vh, 560px);
+  width: min(380px, calc(100vw - 28px));
+}
+
+.chatbot-header {
+  border-bottom: 1px solid rgba(21, 47, 84, 0.12);
+  padding: 14px 14px 10px;
+
+  h2 {
+    font:
+      700 1rem/1.2 'Trebuchet MS',
+      'Avenir Next',
+      'Segoe UI',
+      sans-serif;
+    margin: 0;
+  }
+
+  p {
+    color: rgba(24, 47, 84, 0.72);
+    font:
+      500 0.78rem/1.2 'Trebuchet MS',
+      'Avenir Next',
+      'Segoe UI',
+      sans-serif;
+    margin: 4px 0 0;
+  }
+}
+
+.chatbot-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding: 0 14px;
+}
+
+.chatbot-message {
+  border-radius: 12px;
+  max-width: 88%;
+  padding: 9px 12px;
+
+  p {
+    font:
+      500 0.9rem/1.35 'Trebuchet MS',
+      'Avenir Next',
+      'Segoe UI',
+      sans-serif;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  &.assistant {
+    align-self: flex-start;
+    background: rgba(43, 114, 247, 0.12);
+    border: 1px solid rgba(37, 107, 240, 0.2);
+    color: #16345f;
+  }
+
+  &.user {
+    align-self: flex-end;
+    background: rgba(0, 156, 170, 0.16);
+    border: 1px solid rgba(0, 140, 153, 0.24);
+    color: #083a40;
+  }
+
+  &.typing {
+    opacity: 0.85;
+  }
+}
+
+.chatbot-error {
+  color: #b42318;
+  font:
+    600 0.78rem/1.2 'Trebuchet MS',
+    'Avenir Next',
+    'Segoe UI',
+    sans-serif;
+  margin: 0;
+  padding: 0 14px;
+}
+
+.chatbot-composer {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr auto;
+  padding: 0 14px 14px;
+
+  textarea {
+    background: rgba(244, 248, 255, 0.95);
+    border: 1px solid rgba(35, 74, 126, 0.2);
+    border-radius: 10px;
+    color: #132746;
+    font:
+      500 0.9rem/1.35 'Trebuchet MS',
+      'Avenir Next',
+      'Segoe UI',
+      sans-serif;
+    min-height: 74px;
+    outline: none;
+    padding: 10px;
+    resize: vertical;
+
+    &:focus {
+      border-color: rgba(22, 113, 249, 0.62);
+      box-shadow: 0 0 0 2px rgba(22, 113, 249, 0.16);
+    }
+  }
+
+  ion-button {
+    align-self: end;
+  }
+}
+
+@media (max-width: 599px) {
+  .chatbot-root {
+    bottom: 76px;
+  }
+
+  .chatbot-panel {
+    max-height: min(64vh, 520px);
+  }
+
+  .chatbot-composer {
+    grid-template-columns: 1fr;
+
+    ion-button {
+      justify-self: end;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .chatbot-panel {
+    background: rgba(14, 24, 36, 0.94);
+    border-color: rgba(149, 178, 226, 0.28);
+  }
+
+  .chatbot-header {
+    border-bottom-color: rgba(154, 178, 217, 0.2);
+
+    h2 {
+      color: #f0f6ff;
+    }
+
+    p {
+      color: rgba(214, 228, 252, 0.76);
+    }
+  }
+
+  .chatbot-message.assistant {
+    background: rgba(55, 122, 255, 0.2);
+    border-color: rgba(99, 148, 247, 0.35);
+    color: #d8e7ff;
+  }
+
+  .chatbot-message.user {
+    background: rgba(0, 162, 177, 0.18);
+    border-color: rgba(68, 211, 224, 0.38);
+    color: #cefcff;
+  }
+
+  .chatbot-composer textarea {
+    background: rgba(11, 20, 31, 0.92);
+    border-color: rgba(136, 165, 220, 0.34);
+    color: #ebf4ff;
+  }
+}

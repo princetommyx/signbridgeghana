@@ -168,6 +168,14 @@
   "language-selector": {
     "label": "Change language or region"
   },
+  "signedLanguagesShort": {
+    "ase": "Ghana 🇬🇭",
+    "hps": "Ghana 🇬🇭",
+    "mre": "Ghana 🇬🇭",
+    "psd": "Ghana 🇬🇭",
+    "lsv": "Ghana 🇬🇭",
+    "yds": "Ghana 🇬🇭"
+  },
   "text-to-speech": {
     "play": "Listen",
     "cancel": "Stop",

@@ -5,7 +5,7 @@ export const IANASignedLanguages = [
   {signed: 'asp', spoken: 'ar', country: 'dz', abbreviation: ''}, // Algerian Sign Language
   {signed: 'syy', spoken: 'ar', country: 'ps', abbreviation: 'ABSL'}, // Al-Sayyid Bedouin Sign Language
   {signed: 'jks', spoken: 'ja', country: 'jp', abbreviation: ''}, // Amami Koniya Sign Language
-  {signed: 'ase', spoken: 'en', country: 'us', abbreviation: 'ASL'}, // American Sign Language
+  {signed: 'ase', spoken: 'en', country: 'gh', abbreviation: 'ASL'}, // American Sign Language
   {signed: 'aed', spoken: 'es', country: 'ar', abbreviation: ''}, // Argentine Sign Language
   {signed: 'aen', spoken: 'hy', country: 'am', abbreviation: ''}, // Armenian Sign Language
   {signed: 'asf', spoken: 'en', country: 'au', abbreviation: 'Auslan'}, // Australian Sign Language
@@ -49,7 +49,7 @@ export const IANASignedLanguages = [
   {signed: 'haf', spoken: 'vi', country: 'vn', abbreviation: ''}, // Haiphong Sign Language
   {signed: 'hab', spoken: 'vi', country: 'vn', abbreviation: ''}, // Hanoi Sign Language
   {signed: 'hsl', spoken: 'ha', country: 'ng', abbreviation: ''}, // Hausa Sign Language
-  {signed: 'hps', spoken: 'en', country: 'us', abbreviation: ''}, // Hawai'i Sign Language
+  {signed: 'hps', spoken: 'en', country: 'gh', abbreviation: ''}, // Hawai'i Sign Language
   {signed: 'hos', spoken: 'vi', country: 'vn', abbreviation: ''}, // Ho Chi Minh City Sign Language
   {signed: 'hds', spoken: 'es', country: 'hn', abbreviation: ''}, // Honduras Sign Language
   {signed: 'hks', spoken: 'zh', country: 'hk', abbreviation: ''}, // Hong Kong Sign Language
@@ -107,7 +107,7 @@ export const IANASignedLanguages = [
   {signed: 'psc', spoken: 'fa', country: 'ir', abbreviation: ''}, // Persian Sign Language
   {signed: 'prl', spoken: 'es', country: 'pe', abbreviation: ''}, // Peruvian Sign Language
   {signed: 'psp', spoken: 'en', country: 'ph', abbreviation: ''}, // Philippine Sign Language
-  {signed: 'psd', spoken: 'en', country: 'us', abbreviation: ''}, // Plains Indian Sign Language
+  {signed: 'psd', spoken: 'en', country: 'gh', abbreviation: ''}, // Plains Indian Sign Language
   {signed: 'pso', spoken: 'pl', country: 'pl', abbreviation: 'PJM'}, // Polish Sign Language
   {signed: 'psr', spoken: 'pt', country: 'pt', abbreviation: ''}, // Portuguese Sign Language
   {signed: 'prz', spoken: 'es', country: 'co', abbreviation: ''}, // Providencia Sign Language
@@ -120,7 +120,7 @@ export const IANASignedLanguages = [
   {signed: 'sdl', spoken: 'ar', country: 'sa', abbreviation: ''}, // Saudi Arabian Sign Language
   {signed: 'kgi', spoken: 'ms', country: 'my', abbreviation: ''}, // Selangor Sign Language
   {signed: 'sgx', spoken: 'en', country: 'sl', abbreviation: ''}, // Sierra Leone Sign Language
-  {signed: 'lsv', spoken: 'en', country: 'us', abbreviation: ''}, // Sivia Sign Language
+  {signed: 'lsv', spoken: 'en', country: 'gh', abbreviation: ''}, // Sivia Sign Language
   {signed: 'svk', spoken: 'sk', country: 'sk', abbreviation: 'SPJ'}, // Slovakian Sign Language
   {signed: 'sls', spoken: 'en', country: 'sg', abbreviation: ''}, // Singapore Sign Language
   {signed: 'szs', spoken: 'en', country: 'sb', abbreviation: ''}, // Solomon Islands Sign Language
@@ -149,7 +149,7 @@ export const IANASignedLanguages = [
   {signed: 'vsl', spoken: 'es', country: 've', abbreviation: ''}, // Venezuelan Sign Language
   {signed: 'wbs', spoken: 'bn', country: 'in', abbreviation: ''}, // West Bengal Sign Language
   {signed: 'yhs', spoken: 'en', country: 'au', abbreviation: ''}, // Yan-nhaŋu Sign Language
-  {signed: 'yds', spoken: 'yi', country: 'us', abbreviation: ''}, // Yiddish Sign Language
+  {signed: 'yds', spoken: 'yi', country: 'gh', abbreviation: ''}, // Yiddish Sign Language
   {signed: 'ygs', spoken: 'en', country: 'au', abbreviation: ''}, // Yolŋu Sign Language
   {signed: 'msd', spoken: 'es', country: 'my', abbreviation: ''}, // Yucatec Maya Sign Language
   {signed: 'ysl', spoken: 'sr', country: 'yu', abbreviation: ''}, // Yugoslavian Sign Language

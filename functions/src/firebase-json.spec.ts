@@ -38,6 +38,10 @@ describe('firebase.json', () => {
     expect(resolveRewrite('/api/spoken-to-signed')).toEqual('translate-textToText');
   });
 
+  it('firebase.json should redirect "/api/chatbot-gemini" to the translate-geminiChat', async () => {
+    expect(resolveRewrite('/api/chatbot-gemini')).toEqual('translate-geminiChat');
+  });
+
   it('firebase.json should not redirect assets to the index.html', async () => {
     // Fixed in https://github.com/sign/translate/commit/730546444bf1a35c2097230b1562783ae0dfda2a
     // If even a single i18n asset is redirected instead of 404 error, Transloco reverts everything to English

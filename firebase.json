@@ -100,6 +100,10 @@
         "function": "signwriting_description"
       },
       {
+        "source": "/api/chatbot-gemini",
+        "function": "translate-geminiChat"
+      },
+      {
         "source": "/api/spoken-text-to-signwriting",
         "function": "spoken_text_to_signwriting"
       },

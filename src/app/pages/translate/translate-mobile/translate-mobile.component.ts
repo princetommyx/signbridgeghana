@@ -6,6 +6,7 @@ import {SignedLanguageOutputComponent} from '../spoken-to-signed/signed-language
 import {SignedLanguageInputComponent} from '../signed-to-spoken/signed-language-input/signed-language-input.component';
 import {LanguageSelectorsComponent} from '../language-selectors/language-selectors.component';
 import {VideoModule} from '../../../components/video/video.module';
+import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
 
 @Component({
   selector: 'app-translate-mobile',
@@ -21,6 +22,7 @@ import {VideoModule} from '../../../components/video/video.module';
     SpokenLanguageInputComponent,
     VideoModule,
     LanguageSelectorsComponent,
+    ChatbotWidgetComponent,
   ],
 })
 export class TranslateMobileComponent extends TranslateDesktopComponent {}
