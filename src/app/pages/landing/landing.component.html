@@ -28,7 +28,6 @@
 }
 
 <ion-header [translucent]="true">
-  <app-announcement-banner />
   <ion-toolbar>
     @if (isMobile.matches) {
       <ion-buttons slot="start">
@@ -58,5 +57,4 @@
 
 <ion-content [fullscreen]="true" id="main-content">
   <router-outlet />
-  <app-landing-footer />
 </ion-content>

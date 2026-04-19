@@ -21,9 +21,8 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 import {TranslocoPipe, TranslocoService} from '@jsverse/transloco';
 import {arrowForward} from 'ionicons/icons';
 import {addIcons} from 'ionicons';
-import {LandingFooterComponent} from './landing-footer/landing-footer.component';
+// LandingFooterComponent removed — footer UI removed from templates
 import {LogoComponent} from '../../components/logo/logo.component';
-import {AnnouncementBannerComponent} from '../../components/announcement-banner/announcement-banner.component';
 
 @Component({
   selector: 'app-landing',
@@ -48,9 +47,8 @@ import {AnnouncementBannerComponent} from '../../components/announcement-banner/
     IonMenuButton,
     IonIcon,
     RouterOutlet,
-    LandingFooterComponent,
+    // LandingFooterComponent,
     LogoComponent,
-    AnnouncementBannerComponent,
   ],
 })
 export class LandingComponent {
@@ -60,7 +58,6 @@ export class LandingComponent {
   pages = [
     {key: 'home', route: '/'},
     {key: 'about', route: '/about'},
-    {key: 'contribute', route: '/about/contribute'},
   ];
 
   constructor() {

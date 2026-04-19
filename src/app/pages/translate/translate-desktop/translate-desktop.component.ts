@@ -15,8 +15,7 @@ import {addIcons} from 'ionicons';
 import {cloudUpload, informationCircleOutline, language, videocam} from 'ionicons/icons';
 import {RouterLink} from '@angular/router';
 import {LogoComponent} from '../../../components/logo/logo.component';
-import {AnnouncementBannerComponent} from '../../../components/announcement-banner/announcement-banner.component';
-import {LandingFooterComponent} from '../../landing/landing-footer/landing-footer.component';
+// LandingFooterComponent removed — footer UI removed from templates
 import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
 
 @Component({
@@ -40,8 +39,7 @@ import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
     IonButton,
     RouterLink,
     LogoComponent,
-    AnnouncementBannerComponent,
-    LandingFooterComponent,
+    // LandingFooterComponent,
     ChatbotWidgetComponent,
   ],
 })
@@ -49,10 +47,7 @@ export class TranslateDesktopComponent extends BaseComponent implements OnInit {
   private store = inject(Store);
   spokenToSigned$ = this.store.select<boolean>(state => state.translate.spokenToSigned);
 
-  pages = [
-    {key: 'home', route: '/'},
-    {key: 'contribute', route: '/about/contribute'},
-  ];
+  pages = [{key: 'home', route: '/'}];
 
   spokenToSigned: boolean;
 
