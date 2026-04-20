@@ -7,6 +7,27 @@
     flex: 1;
   }
 
+  ion-toolbar {
+    --background: transparent;
+    --border-width: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  ion-content {
+    --background: var(--sb-bg);
+  }
+
+  ion-menu {
+    --background: var(--sb-bg-alt);
+
+    ion-toolbar {
+      background: var(--sb-bg-alt);
+    }
+  }
+
   .cards-container {
     display: flex;
     @media #{breakpoints.$breakpoint-lt-md} {

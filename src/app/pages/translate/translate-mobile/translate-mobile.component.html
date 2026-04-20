@@ -1,15 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="mobile-toolbar">
+<ion-header class="ion-no-border">
+  <ion-toolbar class="mobile-toolbar glass-card" style="--background: var(--sb-bg-alt); border-radius: 0 0 16px 16px">
     <app-language-selectors />
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" style="--background: var(--sb-bg)">
   <div class="mobile-shell">
-    <div class="mobile-aura mobile-aura-a"></div>
-    <div class="mobile-aura mobile-aura-b"></div>
+    <div class="mesh-pattern"></div>
 
-    <section class="mobile-stage" [class.video-stage]="!spokenToSigned">
+    <section
+      class="mobile-stage glass-card"
+      [class.video-stage]="!spokenToSigned"
+      style="
+        margin: 1rem;
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--sb-glass);
+        border: 1px solid var(--sb-glass-border);
+      ">
       @if (spokenToSigned) {
         <app-signed-language-output />
       } @else {
@@ -19,9 +27,12 @@
   </div>
 </ion-content>
 
-<!-- Footer with input and submit button -->
-<ion-footer [class.signed-to-spoken]="!spokenToSigned">
-  <div class="mobile-footer-inner">
+<!-- Premium Mobile Footer -->
+<ion-footer
+  class="ion-no-border"
+  [class.signed-to-spoken]="!spokenToSigned"
+  style="background: var(--sb-bg-alt); border-top: 1px solid var(--sb-glass-border); padding: 1rem">
+  <div class="mobile-footer-inner glass-card" style="padding: 0.5rem; background: var(--sb-glass); border-radius: 12px">
     @if (spokenToSigned) {
       <app-spoken-language-input [isMobile]="true" />
     } @else {

@@ -1,15 +1,15 @@
-<a href="/">
-  <picture>
-    <!-- TODO: inline the logo SVGs for better performance -->
-    <img src="../../../assets/brand/logo.svg" alt="Logo" />
-  </picture>
-  @if (text) {
-    {{ text }}
-  }
-</a>
-by
-<a href="https://nagish.com">
-  <picture class="nagish-logo">
-    <img src="../../../assets/brand/nagish.svg" alt="Nagish" />
-  </picture>
+<a routerLink="/" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem">
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -1px;
+      color: white;
+    ">
+    <span style="color: var(--sb-primary)">Sign</span>Bridge
+    <span style="margin-left: 0.5rem; font-size: 1.25rem">🇬🇭</span>
+  </div>
 </a>

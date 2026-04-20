@@ -4,36 +4,56 @@
 @forward './ionic';
 @forward './ionic-variables';
 
+:root {
+  --ion-font-family: 'Outfit', sans-serif;
+
+  // Premium Palette
+  --sb-bg: #0f172a;
+  --sb-bg-alt: #1e293b;
+  --sb-primary: #38bdf8;
+  --sb-secondary: #10b981;
+  --sb-accent: #f59e0b;
+  --sb-ghana-red: #ef4444;
+  --sb-glass: rgba(255, 255, 255, 0.03);
+  --sb-glass-border: rgba(255, 255, 255, 0.1);
+  --sb-text: #f8fafc;
+  --sb-text-muted: #94a3b8;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.header-md {
-  // Lighten shadow from material header
-  box-shadow:
-    0 1px 0px -1px rgba(0, 0, 0, 0.2),
-    0 -1px 8px 0 rgba(0, 0, 0, 0.14),
-    0 1px 2px 0 rgba(0, 0, 0, 0.12);
+// Glassmorphism Utility
+.glass-card {
+  background: var(--sb-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sb-glass-border);
+  border-radius: 24px;
+}
+
+// Gradient Text Utility
+.gradient-text {
+  background: linear-gradient(135deg, var(--sb-primary), var(--sb-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 body {
   --mdc-typography-button-letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-family: var(--ion-font-family);
 
-  background-color: white;
+  background-color: var(--sb-bg);
+  color: var(--sb-text);
 
-  --app-divider-color: rgba(0, 0, 0, 0.12);
-  --app-tinted-background-color: #fafafa; /* map-get(mat.$grey-palette, 50); */
-
-  @media (prefers-color-scheme: dark) {
-    background-color: black !important;
-
-    --app-divider-color: rgba(255, 255, 255, 0.12);
-    --app-tinted-background-color: #151515;
-  }
+  --app-divider-color: rgba(255, 255, 255, 0.08);
+  --app-tinted-background-color: var(--sb-bg-alt);
 
   &.embed {
     ion-header,
@@ -46,20 +66,25 @@ body {
   }
 }
 
-// Global ion-content layout for sticky footer
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--sb-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sb-bg-alt);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sb-primary);
+}
+
 ion-content::part(scroll) {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-}
-
-.actions-row {
-  position: absolute;
-  margin: 14px;
-  bottom: 0;
-  right: 0;
-  text-align: end;
-  width: calc(100% - 2 * 14px);
 }
 
 ion-header ion-button {

@@ -7,14 +7,14 @@
     "shift": "Shift"
   },
   "translate": {
-    "logo": "Translate",
-    "title": "Sign Translate",
+    "logo": "Bridge Ghana 🇬🇭",
+    "title": "Sign Bridge Ghana 🇬🇭",
     "language-selector": {
       "detected": "{{lang}} - Detected",
       "more": "More Languages",
       "detect": "Detect language"
     },
-    "description": "Effortless Real-Time Sign Language Translation. Translate Sign Language instantly on desktop and mobile.",
+    "description": "Effortless Real-Time Sign Language Translation for Ghana. Translate Sign Language instantly on desktop and mobile with Sign Bridge Ghana.",
     "input": {
       "webcam": "Webcam",
       "upload": "Upload",
@@ -61,7 +61,7 @@
       "title": "About Us",
       "hero": {
         "title": "Translate between 40+ signed and spoken languages in real-time.",
-        "img": "Example of live translation between American Sign Language and English"
+        "img": "Example of live translation between Ghana Sign Language 🇬🇭 and English"
       },
       "direction": {
         "spoken-to-signed": "Translate from spoken to signed languages",
@@ -95,8 +95,8 @@
         }
       }
     },
-    "contribute": {
-      "title": "Contribute"
+    "dictionary": {
+      "title": "Dictionary"
     },
     "home": {
       "title": "Home"

@@ -7,6 +7,9 @@ export const appCheckVerification: RequestHandler = async (req, res, next) => {
   const appCheckToken = req.header('X-Appcheck-Token');
 
   if (!appCheckToken) {
+    if (process.env['FUNCTIONS_EMULATOR'] === 'true') {
+      return next();
+    }
     throw new httpErrors.Unauthorized('Missing App Check token');
   }
 

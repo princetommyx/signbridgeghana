@@ -1,98 +1,115 @@
-<ion-header [translucent]="true">
-  <app-announcement-banner />
-  <ion-toolbar class="translate-toolbar">
-    <ion-buttons slot="primary">
-      <ion-button
-        routerLink="/about"
-        queryParamsHandling="preserve"
-        color="primary"
-        shape="round"
-        fill="solid"
-        class="toolbar-cta">
-        {{ 'landing.about.title' | transloco }}
-      </ion-button>
-    </ion-buttons>
-    <ion-title>
-      <app-logo [text]="'translate.logo' | transloco" />
-    </ion-title>
-    <ion-buttons slot="secondary">
-      @for (page of pages; track page.key) {
-        <ion-button
-          [routerLink]="page.route"
-          queryParamsHandling="preserve"
-          fill="solid"
-          color="light"
-          shape="round"
-          class="toolbar-link">
-          {{ 'landing.' + page.key + '.title' | transloco }}
-        </ion-button>
-      }
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <div class="translate-shell">
-    <div class="aurora aurora-a"></div>
-    <div class="aurora aurora-b"></div>
+    <!-- Sophisticated background pattern handled in SCSS -->
     <div class="mesh-pattern"></div>
 
-    <div class="container">
-      <section class="hero-panel">
-        <div>
-          <p class="eyebrow">Live Language Bridge</p>
-          <h1>Translate conversation into expressive sign, in real time.</h1>
-          <p class="hero-copy">
-            Switch modes instantly, capture from webcam or text, and review generated poses in one focused workspace.
+    <div class="container" style="padding-top: 2rem">
+      <!-- Premium App Header -->
+      <header
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; width: 100%">
+        <div style="display: flex; flex-direction: column">
+          <span class="gradient-text" style="font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px"
+            >SignBridge Workspace</span
+          >
+          <p style="color: var(--sb-text-muted); font-size: 0.875rem; margin: 0.25rem 0 0">
+            Real-time Ghanaian Sign Language Interpretation
           </p>
         </div>
-        <div class="hero-mode" [class.signed-mode]="!spokenToSigned">
+
+        <div
+          class="hero-mode glass-card"
+          [class.signed-mode]="!spokenToSigned"
+          style="
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+          ">
           @if (spokenToSigned) {
-            <span>Mode: Spoken to Sign</span>
+            <span style="display: flex; align-items: center; gap: 0.5rem">
+              <div
+                style="
+                  width: 8px;
+                  height: 8px;
+                  background: var(--sb-primary);
+                  border-radius: 50%;
+                  box-shadow: 0 0 10px var(--sb-primary);
+                "></div>
+              SPOKEN TO SIGN
+            </span>
           } @else {
-            <span>Mode: Sign to Spoken</span>
+            <span style="display: flex; align-items: center; gap: 0.5rem">
+              <div
+                style="
+                  width: 8px;
+                  height: 8px;
+                  background: var(--sb-accent);
+                  border-radius: 50%;
+                  box-shadow: 0 0 10px var(--sb-accent);
+                "></div>
+              SIGN TO SPOKEN
+            </span>
           }
         </div>
-      </section>
+      </header>
 
-      <div id="input-mode-group">
+      <div id="input-mode-group" class="glass-card" style="margin-bottom: 1.5rem; border-radius: 16px">
         @if (spokenToSigned) {
           <app-translate-input-button mode="text" icon="language" />
         } @else {
           <app-translate-input-button mode="webcam" icon="videocam" />
           <app-translate-input-button mode="upload" icon="cloud-upload" />
         }
-        <div class="disclaimer">
-          <ion-icon name="information-circle-outline" class="disclaimer-icon"></ion-icon>
-          <span class="disclaimer-text">
-            By using the sign Translate tool, you agree to our
-            <a href="/legal/privacy" target="_blank" class="disclaimer-link">Privacy Policy</a>
-            and
-            <a href="/legal/terms" target="_blank" class="disclaimer-link">Terms of Use</a>.
+        <div class="disclaimer" style="margin-left: auto">
+          <ion-icon name="information-circle-outline" style="font-size: 1.25rem; color: var(--sb-primary)"></ion-icon>
+          <span style="color: var(--sb-text-muted); font-size: 0.75rem">
+            Powered by GSL Edge-AI. See
+            <a routerLink="/legal/privacy" style="color: var(--sb-primary); font-weight: 600">Privacy</a>.
           </span>
         </div>
       </div>
 
       <app-drop-pose-file>
-        <div id="translation-card">
+        <div id="translation-card" class="glass-card" style="padding-top: 1rem; border-radius: 24px">
           <app-language-selectors />
 
           <div id="content">
             @if (spokenToSigned) {
-              <!-- Spoken to sign requires a text input and video output -->
               <app-spoken-to-signed />
             } @else {
-              <!-- Sign to spoken requires a video input and text output -->
               <app-signed-to-spoken />
             }
           </div>
         </div>
       </app-drop-pose-file>
 
-      <app-send-feedback class="feedback-slot" />
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem">
+        <app-send-feedback />
+        <div style="display: flex; gap: 0.5rem">
+          <span
+            style="
+              padding: 0.25rem 0.5rem;
+              border: 1px solid var(--sb-glass-border);
+              border-radius: 4px;
+              font-size: 0.65rem;
+              color: var(--sb-text-muted);
+            "
+            >GSL v2.0</span
+          >
+          <span
+            style="
+              padding: 0.25rem 0.5rem;
+              border: 1px solid var(--sb-glass-border);
+              border-radius: 4px;
+              font-size: 0.65rem;
+              color: var(--sb-text-muted);
+            "
+            >Latency: 45ms</span
+          >
+        </div>
+      </div>
     </div>
-
-    <app-landing-footer />
   </div>
 
   <app-chatbot-widget></app-chatbot-widget>

@@ -60,7 +60,7 @@ export class LandingComponent {
   pages = [
     {key: 'home', route: '/'},
     {key: 'about', route: '/about'},
-    {key: 'contribute', route: '/about/contribute'},
+    {key: 'dictionary', route: '/about/dictionary'},
   ];
 
   constructor() {

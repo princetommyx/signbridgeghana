@@ -18,6 +18,9 @@ export function unkeyRatelimit(namespace: string, limit: number, duration: Durat
   const unkeyRootKey = defineString('UNKEY_ROOT_KEY');
 
   return async function (req: Request, res: Response, next: NextFunction) {
+    if (process.env['FUNCTIONS_EMULATOR'] === 'true') {
+      return next();
+    }
     const rawIdentifier = requestIp.getClientIp(req) ?? 'unknown';
     const saltedIdentifier = rawIdentifier + unkeyRootKey.value();
     const identifier = createHash('sha256').update(saltedIdentifier).digest('hex');

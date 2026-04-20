@@ -1,14 +1,15 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {IonIcon} from '@ionic/angular/standalone';
+import {IonButton, IonIcon} from '@ionic/angular/standalone';
 import {addIcons} from 'ionicons';
-import {bulbOutline, codeSlashOutline, trendingUpOutline} from 'ionicons/icons';
+import {arrowForward, bulbOutline, codeSlashOutline, trendingUpOutline} from 'ionicons/icons';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
-  imports: [CommonModule, IonIcon],
+  imports: [CommonModule, IonButton, IonIcon, RouterLink],
 })
 export class AboutComponent {
   // SignBridge Ghana About Component
@@ -40,6 +41,6 @@ export class AboutComponent {
   ];
 
   constructor() {
-    addIcons({codeSlashOutline, bulbOutline, trendingUpOutline});
+    addIcons({arrowForward, codeSlashOutline, bulbOutline, trendingUpOutline});
   }
 }

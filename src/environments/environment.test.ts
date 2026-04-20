@@ -17,6 +17,8 @@ export const environment = {
   },
   reCAPTCHAKey: '',
   initialNavigation: 'enabledNonBlocking' as InitialNavigation,
+  chatbotUrl: 'http://localhost:5001/sign-mt/us-central1/translate-geminiChat',
+  geminiApiKey: 'AIzaSyCR_bHMHvyu26lCuvZVjpPiZj-YM07HxYI',
 };
 
 /*

@@ -1,53 +1,95 @@
 @if (isMobile.matches) {
   <ion-menu contentId="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu</ion-title>
+    <ion-header class="ion-no-border">
+      <ion-toolbar style="--background: var(--sb-bg-alt)">
+        <ion-title style="color: white">Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-list-header lines="full">
-          <ion-label>Pages</ion-label>
+    <ion-content style="--background: var(--sb-bg-alt)">
+      <ion-list lines="none" style="background: transparent">
+        <ion-list-header
+          style="
+            color: var(--sb-primary);
+            font-family: 'Outfit';
+            letter-spacing: 1px;
+            font-weight: 700;
+            background: transparent;
+          ">
+          EXPLORE
         </ion-list-header>
-        <ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
           @for (page of pages; track page.key) {
-            <ion-item [routerLink]="page.route" queryParamsHandling="preserve">
+            <ion-item
+              [routerLink]="page.route"
+              queryParamsHandling="preserve"
+              style="--background: transparent; --color: white; font-family: 'Outfit'">
               <ion-label>{{ 'landing.' + page.key + '.title' | transloco }}</ion-label>
             </ion-item>
           }
         </ion-menu-toggle>
       </ion-list>
     </ion-content>
-    <ion-footer>
-      <ion-button routerLink="/" color="primary" queryParamsHandling="preserve" fill="clear">
-        {{ 'landing.try' | transloco }}
-      </ion-button>
+    <ion-footer class="ion-no-border">
+      <div style="padding: 1.5rem; background: var(--sb-bg-alt)">
+        <ion-button
+          routerLink="/translate"
+          queryParamsHandling="preserve"
+          expand="block"
+          style="
+            --background: linear-gradient(135deg, var(--sb-primary), var(--sb-secondary));
+            --color: white;
+            --border-radius: 12px;
+            font-weight: 600;
+            font-family: 'Outfit';
+          ">
+          {{ 'landing.try' | transloco }}
+        </ion-button>
+      </div>
     </ion-footer>
   </ion-menu>
 }
 
-<ion-header [translucent]="true">
-  <app-announcement-banner />
+<ion-header class="ion-no-border">
   <ion-toolbar>
     @if (isMobile.matches) {
       <ion-buttons slot="start">
-        <ion-menu-button auto-hide="true"></ion-menu-button>
+        <ion-menu-button auto-hide="true" style="color: var(--sb-primary)"></ion-menu-button>
       </ion-buttons>
     }
     <ion-title>
-      <app-logo />
+      <div style="display: flex; align-items: center; gap: 0.75rem">
+        <img
+          src="assets/flags/1x1/gh.svg"
+          style="height: 1.5rem; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)" />
+        <span style="font-weight: 700; letter-spacing: -0.5px; font-family: 'Outfit'; font-size: 1.25rem">
+          <span style="color: var(--sb-primary)">Sign</span>Bridge
+        </span>
+      </div>
     </ion-title>
     @if (!isMobile.matches) {
       <ion-buttons slot="primary">
-        <ion-button routerLink="/" queryParamsHandling="preserve" color="primary" shape="round" fill="solid">
+        <ion-button
+          routerLink="/translate"
+          queryParamsHandling="preserve"
+          style="
+            --background: linear-gradient(135deg, var(--sb-primary), var(--sb-secondary));
+            --color: white;
+            --border-radius: 12px;
+            font-weight: 600;
+            padding: 0 1rem;
+          "
+          fill="solid">
           {{ 'landing.try' | transloco }}
           <ion-icon slot="end" name="arrow-forward" />
         </ion-button>
       </ion-buttons>
       <ion-buttons slot="secondary">
         @for (page of pages; track page.key) {
-          <ion-button [routerLink]="page.route" queryParamsHandling="preserve" fill="solid" color="light" shape="round">
+          <ion-button
+            [routerLink]="page.route"
+            queryParamsHandling="preserve"
+            style="--color: var(--sb-text); font-weight: 500; font-family: 'Outfit'"
+            fill="clear">
             {{ 'landing.' + page.key + '.title' | transloco }}
           </ion-button>
         }
@@ -58,5 +100,4 @@
 
 <ion-content [fullscreen]="true" id="main-content">
   <router-outlet />
-  <app-landing-footer />
 </ion-content>

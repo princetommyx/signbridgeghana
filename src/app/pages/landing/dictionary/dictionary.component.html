@@ -1,0 +1,59 @@
+<div class="container">
+  <div id="dictionary-header">
+    <h1>Ghana Sign Language Dictionary</h1>
+    <p>
+      Discover and learn official signs from the Ghana Sign Language (GSL) dictionary. We are currently integrating the
+      complete library to provide a comprehensive learning resource.
+    </p>
+  </div>
+
+  <div class="search-section">
+    <ion-searchbar placeholder="Search for a word or phrase..." animated="true" show-clear-button="always">
+    </ion-searchbar>
+  </div>
+
+  <div class="categories-section">
+    <h3>Browse by Category</h3>
+    <div class="categories-grid">
+      @for (category of categories; track category.name) {
+        <ion-chip outline="true" color="primary">
+          <ion-icon [name]="category.icon"></ion-icon>
+          <ion-label>{{ category.name }}</ion-label>
+        </ion-chip>
+      }
+    </div>
+  </div>
+
+  <div class="featured-section">
+    <h3>Featured Signs</h3>
+    <div class="cards-container">
+      @for (sign of featuredSigns; track sign.word) {
+        <ion-card>
+          <div class="sign-placeholder">
+            <ion-icon name="videocam-outline" size="large"></ion-icon>
+            <p>Video coming soon</p>
+          </div>
+          <ion-card-header>
+            <ion-card-title>{{ sign.word }}</ion-card-title>
+            <ion-card-subtitle>{{ sign.category }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ sign.description }}</p>
+          </ion-card-content>
+        </ion-card>
+      }
+    </div>
+  </div>
+
+  <div class="integration-notice">
+    <ion-card color="light">
+      <ion-card-content>
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <p>
+          <strong>Notice:</strong> We are working closely with the Ghana Sign Language community to verify and integrate
+          the official signs. If you have suggestions or resources, please contact us.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>

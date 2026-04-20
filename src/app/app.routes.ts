@@ -16,10 +16,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/benchmark/benchmark.component').then(m => m.BenchmarkComponent),
     providers: [{provide: LanguageDetectionService, useClass: MediaPipeLanguageDetectionService}],
   },
-  {path: 'about', loadChildren: () => import('./pages/landing/landing.routes').then(m => m.routes)},
+  {path: '', loadChildren: () => import('./pages/landing/landing.routes').then(m => m.routes)},
+  {path: 'about', redirectTo: ''},
   {path: 'legal', loadChildren: () => import('./pages/landing/landing.routes').then(m => m.routes)},
   {
-    path: '',
+    path: 'translate',
     component: MainComponent,
     children: [
       {
@@ -30,18 +31,6 @@ export const routes: Routes = [
           {provide: LanguageDetectionService, useClass: MediaPipeLanguageDetectionService},
         ],
       },
-      {
-        path: 'translate',
-        redirectTo: '',
-      },
-      // {
-      //   path: 'converse',
-      //   loadChildren: () => import('./tab2/tab2.module').then(m => m.Tab2PageModule),
-      // },
-      // {
-      //   path: 'avatars',
-      //   loadChildren: () => import('./tab3/tab3.module').then(m => m.Tab3PageModule),
-      // },
       {path: 'settings', loadChildren: () => import('./pages/settings/settings.routes').then(m => m.routes)},
     ],
   },

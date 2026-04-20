@@ -42,7 +42,7 @@ export class AboutFaqComponent {
     {
       question: 'How can I get support or ask questions about sign.mt?',
       answer:
-        'You can contact our team at sign@nagish.com for general inquiries or collaboration opportunities. For technical questions, issues, or contributions, please open a discussion or issue on our GitHub repository at github.com/sign/translate.',
+        'You can contact our team at hello@signbridgeghana.com for general inquiries or collaboration opportunities. For technical questions, issues, or contributions, please open a discussion or issue on our GitHub repository at github.com/signbridgeghana/translate.',
     },
     {
       question: 'What are the most common use cases explored in sign.mt research?',

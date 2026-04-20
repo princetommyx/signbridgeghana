@@ -94,7 +94,11 @@ export const geminiChatFunctions = () => {
     const {history, userMessage, context} = parseBody(req);
 
     const model = 'gemini-2.0-flash';
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiApiKey.value()}`;
+    const key = geminiApiKey.value() || process.env['GEMINI_API_KEY'];
+    if (!key) {
+      throw new httpErrors.InternalServerError('GEMINI_API_KEY is not configured');
+    }
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
     const contents = [
       ...history.map(message => ({
         role: message.role === 'assistant' ? 'model' : 'user',
@@ -120,6 +124,8 @@ export const geminiChatFunctions = () => {
 
     if (!response.ok) {
       const details = await response.text();
+      console.error('Gemini API call failed with status:', response.status);
+      console.error('Error details:', details);
       throw new httpErrors.BadGateway(`Gemini API request failed: ${details}`);
     }
 

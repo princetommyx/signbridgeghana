@@ -2,98 +2,28 @@
 @use '../../../../theme/md3-tokens' as md3;
 @use '../../../../theme/animations' as anim;
 
-.container {
-  flex: 1;
-}
-
-.translate-toolbar {
-  --background: rgba(252, 252, 252, 0.72);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-
-  @media (prefers-color-scheme: dark) {
-    --background: rgba(22, 24, 29, 0.72);
-  }
-
-  .toolbar-cta,
-  .toolbar-link {
-    font-family: 'Trebuchet MS', 'Avenir Next', 'Segoe UI', sans-serif;
-    letter-spacing: 0.01em;
-    font-weight: 700;
-  }
-
-  .toolbar-link {
-    --background: rgba(32, 41, 58, 0.08);
-    --color: #1b2538;
-
-    @media (prefers-color-scheme: dark) {
-      --background: rgba(130, 149, 186, 0.15);
-      --color: #e8edff;
-    }
-  }
-}
-
 .translate-shell {
-  background:
-    radial-gradient(circle at 10% 8%, rgba(38, 198, 218, 0.18), transparent 36%),
-    radial-gradient(circle at 88% 16%, rgba(255, 167, 38, 0.2), transparent 40%),
-    linear-gradient(150deg, #f7fbff 0%, #f4f7fc 46%, #f7fdf8 100%);
+  background: var(--sb-bg);
   display: flex;
   flex-direction: column;
   min-height: 100%;
   overflow-x: hidden;
   overflow-y: visible;
   position: relative;
-
-  @media (prefers-color-scheme: dark) {
-    background:
-      radial-gradient(circle at 8% 12%, rgba(38, 198, 218, 0.16), transparent 40%),
-      radial-gradient(circle at 88% 14%, rgba(255, 167, 38, 0.16), transparent 44%),
-      linear-gradient(155deg, #11151d 0%, #121927 45%, #0c1717 100%);
-  }
-
-  .aurora {
-    border-radius: 999px;
-    filter: blur(24px);
-    position: absolute;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .aurora-a {
-    animation: driftA 13s ease-in-out infinite;
-    background: rgba(58, 201, 190, 0.24);
-    height: 320px;
-    left: -92px;
-    top: 96px;
-    width: 320px;
-  }
-
-  .aurora-b {
-    animation: driftB 15s ease-in-out infinite;
-    background: rgba(255, 178, 82, 0.24);
-    height: 280px;
-    right: -70px;
-    top: 180px;
-    width: 280px;
-  }
+  font-family: 'Outfit', sans-serif;
 
   .mesh-pattern {
     background-image:
-      linear-gradient(rgba(56, 77, 112, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56, 77, 112, 0.08) 1px, transparent 1px);
-    background-size: 20px 20px;
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
     bottom: 0;
     left: 0;
-    opacity: 0.35;
+    opacity: 0.2;
     position: absolute;
     right: 0;
     top: 0;
     z-index: 0;
-
-    @media (prefers-color-scheme: dark) {
-      opacity: 0.2;
-    }
   }
 }
 
@@ -102,131 +32,42 @@
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  gap: 16px;
+  gap: 1.5rem;
   position: relative;
   z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 
   @media #{breakpoints.$breakpoint-gt-md} {
-    padding: 36px 48px 16px;
+    padding: 3rem 4rem;
   }
 
   app-drop-pose-file {
     flex: 0 0 auto;
   }
 
-  .hero-panel {
-    @include anim.animate-slide-down(md3.$md3-duration-medium4);
-    align-items: end;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(25, 41, 70, 0.14);
-    border-radius: 20px;
-    box-shadow: 0 22px 44px rgba(33, 59, 91, 0.14);
-    display: grid;
-    gap: 12px;
-    grid-template-columns: 1fr auto;
-    padding: 20px 22px;
+  .hero-mode {
+    background: var(--sb-glass);
+    border: 1px solid var(--sb-glass-border);
+    color: var(--sb-text);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-    @media (prefers-color-scheme: dark) {
-      background: rgba(18, 25, 36, 0.74);
-      border-color: rgba(153, 173, 220, 0.2);
-      box-shadow: 0 22px 44px rgba(0, 0, 0, 0.32);
-    }
-
-    .eyebrow {
-      color: #006c72;
-      font:
-        700 12px/1.2 'Trebuchet MS',
-        'Avenir Next',
-        'Segoe UI',
-        sans-serif;
-      letter-spacing: 0.11em;
-      margin: 0 0 8px;
-      text-transform: uppercase;
-
-      @media (prefers-color-scheme: dark) {
-        color: #6be4dc;
-      }
-    }
-
-    h1 {
-      color: #16253f;
-      font:
-        700 clamp(1.35rem, 1.6vw, 1.95rem) / 1.12 'Trebuchet MS',
-        'Avenir Next',
-        'Segoe UI',
-        sans-serif;
-      margin: 0;
-
-      @media (prefers-color-scheme: dark) {
-        color: #f3f7ff;
-      }
-    }
-
-    .hero-copy {
-      color: #32435f;
-      font:
-        500 0.95rem/1.42 'Trebuchet MS',
-        'Avenir Next',
-        'Segoe UI',
-        sans-serif;
-      margin: 10px 0 0;
-      max-width: 58ch;
-
-      @media (prefers-color-scheme: dark) {
-        color: rgba(233, 240, 255, 0.85);
-      }
-    }
-
-    .hero-mode {
-      background: linear-gradient(135deg, rgba(2, 158, 171, 0.14), rgba(2, 158, 171, 0.04));
-      border: 1px solid rgba(0, 145, 156, 0.3);
-      border-radius: 999px;
-      color: #00545a;
-      font:
-        700 0.78rem/1 'Trebuchet MS',
-        'Avenir Next',
-        'Segoe UI',
-        sans-serif;
-      letter-spacing: 0.06em;
-      padding: 11px 14px;
-      text-transform: uppercase;
-
-      &.signed-mode {
-        background: linear-gradient(135deg, rgba(255, 164, 79, 0.18), rgba(255, 164, 79, 0.08));
-        border-color: rgba(201, 118, 13, 0.32);
-        color: #8c5107;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        color: #9ef0ea;
-
-        &.signed-mode {
-          color: #ffcf95;
-        }
-      }
+    &.signed-mode {
+      border-color: rgba(245, 158, 11, 0.2);
     }
   }
 
   #input-mode-group {
     @include anim.animate-slide-up(md3.$md3-duration-medium4, 0.05s);
     align-items: center;
-    background: rgba(255, 255, 255, 0.58);
-    border: 1px solid rgba(21, 42, 75, 0.13);
-    border-radius: 16px;
+    background: var(--sb-glass);
+    border: 1px solid var(--sb-glass-border);
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75em;
-    min-height: 68px;
-    padding: 10px 12px;
-
-    @media (prefers-color-scheme: dark) {
-      background: rgba(16, 24, 35, 0.72);
-      border-color: rgba(142, 165, 209, 0.22);
-    }
-
-    @media #{breakpoints.$breakpoint-lt-lg} {
-      padding: 0 12px;
-    }
+    gap: 1rem;
+    min-height: 72px;
+    padding: 0 1.5rem;
 
     @media #{breakpoints.$breakpoint-lt-sm} {
       display: none;
@@ -234,184 +75,43 @@
   }
 
   #translation-card {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(22, 41, 71, 0.15);
-    border-radius: 26px;
-    box-shadow: 0 26px 56px rgba(20, 35, 56, 0.18);
+    background: var(--sb-glass);
+    border: 1px solid var(--sb-glass-border);
     height: 100%;
     overflow: hidden;
     position: relative;
-    transition:
-      box-shadow md3.$md3-duration-medium2 md3.$md3-easing-standard,
-      transform md3.$md3-duration-medium2 md3.$md3-easing-standard;
-    width: 100%;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.3);
     @include anim.animate-scale-in(md3.$md3-duration-medium2, 0.1s);
 
     &::before {
       content: '';
-      height: 5px;
+      height: 4px;
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(
-        102deg,
-        rgba(0, 157, 171, 0.92) 0%,
-        rgba(255, 160, 74, 0.82) 52%,
-        rgba(27, 120, 255, 0.78) 100%
-      );
+      background: linear-gradient(90deg, var(--sb-primary), var(--sb-secondary), var(--sb-accent));
       background-size: 200% 100%;
-      animation: gradientShift 4s ease-in-out infinite;
+      animation: gradientShift 6s ease-in-out infinite;
       z-index: 10;
-      box-shadow: 0 3px 10px rgba(0, 120, 138, 0.3);
-    }
-
-    &::after {
-      content: '';
-      height: 220px;
-      left: 40%;
-      position: absolute;
-      top: -120px;
-      transform: translateX(-50%);
-      width: 360px;
-      background: radial-gradient(circle, rgba(0, 157, 171, 0.18) 0%, rgba(255, 166, 79, 0.1) 36%, transparent 70%);
-      opacity: 0.75;
-      transition: opacity md3.$md3-duration-medium4 md3.$md3-easing-standard;
-      pointer-events: none;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background: rgba(13, 20, 31, 0.82);
-      border-color: rgba(154, 178, 224, 0.22);
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
-    }
-
-    @media #{breakpoints.$breakpoint-gt-xs} {
-      &:hover {
-        box-shadow: 0 28px 62px rgba(20, 35, 56, 0.24);
-        transform: translateY(-4px);
-        &::after {
-          opacity: 1;
-        }
-      }
-    }
-
-    @media #{breakpoints.$breakpoint-gt-md} {
-      border-radius: 26px;
     }
 
     app-language-selectors {
-      border-bottom: 1px solid rgba(36, 57, 91, 0.16);
-      position: relative;
-      z-index: 1;
-
-      @media (prefers-color-scheme: dark) {
-        border-bottom-color: rgba(156, 176, 219, 0.2);
-      }
-    }
-
-    #content {
+      border-bottom: 1px solid var(--sb-glass-border);
       position: relative;
       z-index: 1;
     }
   }
-
-  .feedback-slot {
-    @include anim.animate-fade-in(md3.$md3-duration-medium2, 0.08s);
-    margin-bottom: 8px;
-  }
 }
 
-ntkme-github-button {
-  margin: 0 8px;
-}
-
-#version {
-  cursor: help;
-  font-family: monospace;
-}
-
-.disclaimer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  text-align: end;
-  margin-left: auto;
-  max-width: max-content;
-  padding: 9px 13px;
-  background: linear-gradient(135deg, rgba(32, 168, 178, 0.14) 0%, rgba(255, 167, 79, 0.12) 100%);
-  border-radius: 14px;
-  border: 1px solid rgba(30, 106, 122, 0.2);
-  transition: all md3.$md3-duration-short4 md3.$md3-easing-emphasized;
-
-  @media (prefers-color-scheme: dark) {
-    border-color: rgba(115, 149, 207, 0.28);
-  }
-
-  &:hover {
-    background: linear-gradient(135deg, rgba(32, 168, 178, 0.2) 0%, rgba(255, 167, 79, 0.17) 100%);
-    border-color: rgba(30, 106, 122, 0.3);
-  }
-
-  &-icon {
-    font-size: 17px;
-    color: rgba(0, 111, 121, 0.88);
-    flex-shrink: 0;
-
-    @media (prefers-color-scheme: dark) {
-      color: rgba(126, 233, 225, 0.9);
-    }
-  }
-
-  &-text {
-    color: rgba(20, 33, 55, 0.84);
-    font-family: 'Trebuchet MS', 'Avenir Next', 'Segoe UI', sans-serif;
-
-    @media (prefers-color-scheme: dark) {
-      color: rgba(241, 246, 255, 0.75);
-    }
-  }
-
-  &-link {
-    color: #006f85;
-    text-decoration: none;
-    font-weight: 700;
-    transition: opacity md3.$md3-duration-short4 md3.$md3-easing-standard;
-
-    @media (prefers-color-scheme: dark) {
-      color: #8fd2ff;
-    }
-
-    &:hover {
-      opacity: 0.8;
-      text-decoration: underline;
-    }
-  }
-}
-
-@media #{breakpoints.$breakpoint-lt-md} {
-  .container .hero-panel {
-    grid-template-columns: 1fr;
-  }
-}
-
-@keyframes driftA {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
   50% {
-    transform: translate3d(24px, -20px, 0);
+    background-position: 100% 50%;
   }
-}
-
-@keyframes driftB {
-  0%,
   100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(-18px, 18px, 0);
+    background-position: 0% 50%;
   }
 }

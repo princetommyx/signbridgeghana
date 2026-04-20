@@ -10,4 +10,5 @@ export const environment = {
     measurementId: 'G-1LXY5W5Z9H',
   },
   reCAPTCHAKey: '6Ldsxb8oAAAAAGyUZbyd0QruivPSudqAWFygR-4t',
+  chatbotUrl: 'https://sign.mt/api/chatbot-gemini',
 };
