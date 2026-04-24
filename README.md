@@ -68,7 +68,7 @@
           │                                                              │           └─────────┘
           ▼                                                              │
 ┌────────────────────┐     ┌───────────────┐     ┌───────────┐    ┌──────┴──────┐    ┌───────────────┐
-│Spoken Language Text├────►│Normalized Text├────►│SignWriting├───►│Pose Sequence├───►│Skeleton Viewer│
+│Spoken Language Text├────►│Normalized Text├────►│SignWriting├───►│Pose Sequence├───►│  Pose-Viewer  │
 └─────────┬──────────┘     └───────────────┘     └───────────┘    └──────┬──────┘    └───────────────┘
           │                        ▲                   ▲                 │
           ▼                        │                   │                 │           ┌─────────┐
@@ -106,6 +106,14 @@ Check our guidelines for [contributing][contributing] and then explore our issue
 **Find this useful? Give our repo a star :star: :arrow_up:.**
 
 [![Stargazers repo roster for @sign/translate](https://reporoster.com/stars/sign/translate)](https://github.com/sign/translate/stargazers)
+
+## Technology Stack
+
+- **Frontend**: Angular, Ionic, Material Design
+- **3D Rendering**: **Pose-Viewer**, Three.js, Model Viewer
+- **AI/ML**: MediaPipe (Holistic), TensorFlow.js, Google Gemini
+- **Backend**: Firebase (Hosting, Storage, Functions)
+- **Languages**: TypeScript, HTML, SCSS/CSS, Python (ML processing)
 
 [wiki]: https://github.com/sign/translate/wiki/Spoken-to-Signed
 [contributing]: https://github.com/sign/.github/blob/main/CONTRIBUTING.md
