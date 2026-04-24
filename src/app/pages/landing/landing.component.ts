@@ -57,6 +57,7 @@ export class LandingComponent {
 
   pages = [
     {key: 'home', route: '/'},
+    {key: 'dictionary', route: '/dictionary'},
     {key: 'about', route: '/about'},
   ];
 

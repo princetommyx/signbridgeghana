@@ -1,7 +1,9 @@
 @if (message$ | async; as message) {
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Tip: {{ message.word }}</ion-card-title>
+      <ion-card-title>
+        Signing: <strong>{{ message.word | titlecase }}</strong>
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
       {{ message.tip }}

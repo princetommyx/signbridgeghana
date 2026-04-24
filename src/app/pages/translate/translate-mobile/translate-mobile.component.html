@@ -1,5 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="mobile-toolbar">
+    <ion-buttons slot="start">
+      @for (page of pages; track page.key) {
+        <ion-button [routerLink]="page.route" queryParamsHandling="preserve" color="dark" fill="clear">
+          {{ 'landing.' + page.key + '.title' | transloco }}
+        </ion-button>
+      }
+    </ion-buttons>
     <app-language-selectors />
   </ion-toolbar>
 </ion-header>
@@ -9,9 +16,9 @@
     <div class="status-hero">
       <div class="status-indicator">
         <span class="dot"></span>
-        <span class="text">Live AI Interpreter</span>
+        <span class="text">GSL AI Bridge 🇬🇭</span>
       </div>
-      <h2>{{ (spokenToSigned$ | async) ? 'Text & Speech to Sign' : 'Sign to Speech & Text' }}</h2>
+      <h2>{{ (spokenToSigned$ | async) ? 'Translate to GSL' : 'Interpret to Text' }}</h2>
     </div>
 
     <section class="mobile-stage" [class.video-stage]="!spokenToSigned">

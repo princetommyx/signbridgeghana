@@ -34,11 +34,12 @@
   <div class="translate-shell">
     <div class="container">
       <section class="hero-panel">
+        <div class="kente-pattern"></div>
         <div>
-          <p class="eyebrow">Live Language Bridge</p>
-          <h1>Translate conversation into expressive sign, in real time.</h1>
+          <p class="eyebrow">Signbridge Ghana 🇬🇭</p>
+          <h1>Translate conversation into expressive Ghana Sign Language, in real time.</h1>
           <p class="hero-copy">
-            Switch modes instantly, capture from webcam or text, and review generated poses in one focused workspace.
+            Preserving our heritage through technology. Translate text or speech and learn GSL with AI-powered guidance.
           </p>
         </div>
         <div class="hero-mode" [class.signed-mode]="!spokenToSigned">
@@ -54,7 +55,6 @@
         @if (spokenToSigned) {
           <app-translate-input-button mode="text" icon="language" />
         } @else {
-          <app-translate-input-button mode="webcam" icon="videocam" />
           <app-translate-input-button mode="upload" icon="cloud-upload" />
         }
         <div class="disclaimer">

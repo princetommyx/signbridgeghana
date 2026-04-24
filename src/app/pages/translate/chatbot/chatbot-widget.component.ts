@@ -3,6 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {IonButton} from '@ionic/angular/standalone';
 import {GeminiChatContext, GeminiChatMessage, GeminiChatService} from './gemini-chat.service';
 import {Store} from '@ngxs/store';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-chatbot-widget',
@@ -14,6 +15,7 @@ import {Store} from '@ngxs/store';
 export class ChatbotWidgetComponent {
   private store = inject(Store);
   private chatService = inject(GeminiChatService);
+  private router = inject(Router);
 
   @ViewChild('messagesList') messagesList?: ElementRef<HTMLDivElement>;
 
@@ -24,7 +26,7 @@ export class ChatbotWidgetComponent {
   messages: GeminiChatMessage[] = [
     {
       role: 'assistant',
-      text: 'Hello! I can help with translations, sign language questions, and how to use this tool.',
+      text: 'Hello! I am your Ghana Sign Language (GSL) assistant. I can help with translations, signs, and questions about GSL.',
     },
   ];
 
@@ -66,12 +68,26 @@ export class ChatbotWidgetComponent {
         this.isSending = false;
         this.scrollToBottom();
       },
-      error: () => {
-        this.errorMessage = 'Unable to get a response right now. Please try again in a moment.';
+      error: err => {
+        this.errorMessage = err.message || 'Unable to get a response right now. Please try again in a moment.';
         this.isSending = false;
         this.scrollToBottom();
       },
     });
+  }
+
+  getDictionaryLink(text: string): string | null {
+    const match = text.match(/\[See "(.*?)" in Dictionary\]/);
+    return match ? match[1] : null;
+  }
+
+  stripDictionaryLink(text: string): string {
+    return text.replace(/\[See "(.*?)" in Dictionary\]/, '').trim();
+  }
+
+  goToDictionary(word: string) {
+    this.router.navigate(['/dictionary'], {queryParams: {search: word}});
+    this.isOpen = false;
   }
 
   private getContext(): GeminiChatContext {

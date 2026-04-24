@@ -39,7 +39,8 @@ speed-measure-plugin*.json
 /coverage
 /libpeerconnection.log
 # Ignore large PDF dictionary
-/gsl-dictionary/Ghanaian Sign Language Dictionary - 3rd Edition.pdf
+/gsl-dictionary/*.pdf
+/src/assets/docs/*.pdf
 npm-debug.log
 yarn-error.log
 testem.log

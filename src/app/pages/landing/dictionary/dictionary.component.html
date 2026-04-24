@@ -1,0 +1,76 @@
+<ion-content>
+  <div class="dictionary-container">
+    <header class="dictionary-header">
+      <div class="badge">Ghana Sign Language</div>
+      <h1>Official GSL Dictionary</h1>
+      <p>Explore the vocabulary and grammar of Ghanaian Sign Language.</p>
+    </header>
+
+    <div class="dictionary-actions">
+      <div class="search-box">
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (keyup.enter)="onSearch()"
+          placeholder="Search for a sign (e.g. 'Hello', 'Ghana')..." />
+        <button class="search-btn" (click)="onSearch()">Search</button>
+      </div>
+    </div>
+
+    <!-- Search Results Section -->
+    <div class="results-section" *ngIf="isSearching">
+      <div class="results-header">
+        <h2>Results for "{{ searchQuery }}"</h2>
+        <button class="clear-btn" (click)="clearSearch()">Clear results</button>
+      </div>
+
+      <div class="results-grid" *ngIf="searchResults.length > 0; else noResults">
+        <div class="sign-card" *ngFor="let sign of searchResults">
+          <div class="sign-image" *ngIf="sign.image">
+            <img [src]="sign.image" [alt]="sign.word" />
+          </div>
+          <div class="sign-meta">
+            <span class="sign-category">{{ sign.category }}</span>
+            <span class="sign-source">{{ sign.source }}</span>
+          </div>
+          <div class="sign-word">{{ sign.word }}</div>
+          <p class="sign-desc">{{ sign.description }}</p>
+        </div>
+      </div>
+
+      <ng-template #noResults>
+        <div class="no-results-card">
+          <div class="icon">🔍</div>
+          <h3>No matches found</h3>
+          <p>Try searching for common words like "Hello", "Family", or "Ghana".</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="pdf-viewer-section" *ngIf="!isSearching">
+      <div class="card premium-card">
+        <div class="card-icon">📚</div>
+        <div class="card-content">
+          <h3>Full GSL Dictionary (3rd Edition)</h3>
+          <p>
+            Access the complete 425MB official dictionary PDF. Note: This is a large file and may take a moment to load.
+          </p>
+          <a href="/assets/docs/gsl-dictionary.pdf" target="_blank" class="cta-button">
+            View PDF Dictionary
+            <span class="icon">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section class="quick-links" *ngIf="!isSearching">
+      <h2>Browse by Category</h2>
+      <div class="categories-grid">
+        <div class="category-item" (click)="searchQuery = 'Greetings'; onSearch()">Greetings</div>
+        <div class="category-item" (click)="searchQuery = 'Education'; onSearch()">Education</div>
+        <div class="category-item" (click)="searchQuery = 'Family'; onSearch()">Family</div>
+        <div class="category-item" (click)="searchQuery = 'Health'; onSearch()">Health</div>
+      </div>
+    </section>
+  </div>
+</ion-content>

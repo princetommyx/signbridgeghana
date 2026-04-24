@@ -12,6 +12,8 @@ import {moon, sunny} from 'ionicons/icons';
 import {Store} from '@ngxs/store';
 import {SetSetting} from '../../../modules/settings/settings.actions';
 import {AsyncPipe} from '@angular/common';
+import {RouterLink} from '@angular/router';
+import {TranslocoPipe} from '@jsverse/transloco';
 
 @Component({
   selector: 'app-translate-mobile',
@@ -32,6 +34,8 @@ import {AsyncPipe} from '@angular/common';
     LanguageSelectorsComponent,
     ChatbotWidgetComponent,
     AsyncPipe,
+    RouterLink,
+    TranslocoPipe,
   ],
 })
 export class TranslateMobileComponent extends TranslateDesktopComponent {

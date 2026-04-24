@@ -11,7 +11,7 @@ export const routes: Routes = [
     component: LandingComponent,
     children: [
       {path: '', component: AboutComponent},
-      {path: 'about', redirectTo: ''},
+      {path: 'about', component: AboutComponent},
       {path: 'contribute', redirectTo: ''},
       {path: 'terms', component: TermsComponent},
       {path: 'privacy', component: PrivacyComponent},

@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "sign-mt"
-  },
-  "targets": {
-    "sign-mt": {
-      "hosting": {
-        "translate": [
-          "translate-sign-mt"
-        ]
-      }
-    }
+    "default": "signbridge-577bb"
   }
 }

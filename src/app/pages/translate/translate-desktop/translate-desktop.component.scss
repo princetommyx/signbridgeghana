@@ -109,25 +109,29 @@
     display: grid;
     gap: 16px;
     grid-template-columns: 1fr auto;
-    padding: 32px;
+    padding: 40px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
 
     .eyebrow {
-      color: var(--ion-color-primary);
+      color: var(--ghana-green);
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
       font-size: 14px;
       letter-spacing: 0.1em;
       margin-bottom: 12px;
       text-transform: uppercase;
-      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     h1 {
       color: #0f172a;
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+      font-size: clamp(2rem, 3vw, 3.2rem);
       line-height: 1.1;
       margin: 0;
       letter-spacing: -0.03em;
@@ -137,7 +141,7 @@
       color: #475569;
       font-family: 'Inter', sans-serif;
       font-weight: 450;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       line-height: 1.6;
       margin: 16px 0 0;
       max-width: 60ch;
@@ -145,66 +149,62 @@
 
     .hero-mode {
       align-self: center;
-      background: rgba(79, 70, 229, 0.1);
-      border: 1px solid rgba(79, 70, 229, 0.2);
-      border-radius: 12px;
-      color: #4f46e5;
+      background: rgba(0, 107, 63, 0.08);
+      border: 1.5px solid var(--ghana-green);
+      border-radius: 100px;
+      color: var(--ghana-green);
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
-      font-size: 0.85rem;
-      padding: 12px 20px;
+      font-size: 0.8rem;
+      padding: 10px 24px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(0, 107, 63, 0.1);
 
       &.signed-mode {
-        background: rgba(139, 92, 246, 0.1);
-        border-color: rgba(139, 92, 246, 0.2);
-        color: #8b5cf6;
-      }
-
-      body.dark & {
-        color: #818cf8;
-        &.signed-mode {
-          color: #a78bfa;
-        }
+        background: rgba(206, 17, 38, 0.08);
+        border-color: var(--ghana-red);
+        color: var(--ghana-red);
+        box-shadow: 0 4px 12px rgba(206, 17, 38, 0.1);
       }
     }
   }
 
   #input-mode-group {
     @include anim.animate-slide-up(md3.$md3-duration-medium4, 0.05s);
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
+    padding: 14px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   }
 
   #translation-card {
     @include anim.animate-scale-in(md3.$md3-duration-medium4, 0.1s);
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 32px;
     box-shadow:
       0 10px 15px -3px rgba(0, 0, 0, 0.05),
-      0 20px 40px -10px rgba(0, 0, 0, 0.08);
+      0 30px 60px -10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
     transition:
-      transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       box-shadow 0.3s ease;
 
     &:hover {
-      transform: translateY(-4px);
+      transform: translateY(-8px);
       box-shadow:
         0 20px 25px -5px rgba(0, 0, 0, 0.06),
-        0 30px 50px -15px rgba(0, 0, 0, 0.1);
+        0 40px 80px -15px rgba(0, 0, 0, 0.15);
     }
 
     &::before {
@@ -213,8 +213,16 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #4f46e5, #8b5cf6, #06b6d4);
+      height: 8px;
+      background: linear-gradient(
+        90deg,
+        var(--ghana-red) 0%,
+        var(--ghana-red) 33.33%,
+        var(--ghana-gold) 33.33%,
+        var(--ghana-gold) 66.66%,
+        var(--ghana-green) 66.66%,
+        var(--ghana-green) 100%
+      );
       z-index: 2;
     }
 

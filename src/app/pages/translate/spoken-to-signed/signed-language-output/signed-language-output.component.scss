@@ -83,3 +83,26 @@ video {
     }
   }
 }
+
+app-smart-tips {
+  display: block;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0 16px 16px;
+    pointer-events: none; // Allow clicks to pass through to the video if needed
+
+    ion-card {
+      margin: 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+      pointer-events: auto;
+    }
+  }
+}

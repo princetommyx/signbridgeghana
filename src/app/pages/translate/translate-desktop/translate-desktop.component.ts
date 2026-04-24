@@ -51,7 +51,10 @@ export class TranslateDesktopComponent extends BaseComponent implements OnInit {
   spokenToSigned$ = this.store.select<boolean>(state => state.translate.spokenToSigned);
   theme$ = this.store.select<string>(state => state.settings.theme);
 
-  pages = [{key: 'home', route: '/'}];
+  pages = [
+    {key: 'home', route: '/'},
+    {key: 'dictionary', route: '/dictionary'},
+  ];
 
   spokenToSigned: boolean;
 

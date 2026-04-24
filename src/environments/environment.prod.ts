@@ -1,13 +1,14 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyAtVDGmDVCwWunWW2ocgeHWnAsUhHuXvcg',
-    authDomain: 'sign-mt.firebaseapp.com',
-    projectId: 'sign-mt',
-    storageBucket: 'sign-mt.appspot.com',
-    messagingSenderId: '665830225099',
-    appId: '1:665830225099:web:18e0669d5847a4b047974e',
-    measurementId: 'G-1LXY5W5Z9H',
+    apiKey: 'AIzaSyCwMowpwjmzJaSR6tnjDJ04_8xS3--fg8I',
+    authDomain: 'signbridge-577bb.firebaseapp.com',
+    projectId: 'signbridge-577bb',
+    storageBucket: 'signbridge-577bb.firebasestorage.app',
+    messagingSenderId: '606133422674',
+    appId: '1:606133422674:web:771e842541ce6616c1ed8b',
+    measurementId: 'G-M0XJSZ0THZ',
   },
+  geminiApiKey: 'AIzaSyAmQL2w7PB4Cx_BCm-mTCUfOjC8Q7zEJgI',
   reCAPTCHAKey: '6Ldsxb8oAAAAAGyUZbyd0QruivPSudqAWFygR-4t',
 };

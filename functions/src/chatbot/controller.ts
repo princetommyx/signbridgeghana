@@ -4,10 +4,10 @@ import * as httpErrors from 'http-errors';
 import {onRequest} from 'firebase-functions/v2/https';
 import {defineSecret} from 'firebase-functions/params';
 import fetch from 'node-fetch';
-import {appCheckVerification} from '../middlewares/appcheck.middleware';
+// import {appCheckVerification} from '../middlewares/appcheck.middleware';
 import {errorMiddleware} from '../middlewares/error.middleware';
 import {optionsRequest} from '../middlewares/options.request';
-import {unkeyRatelimit} from '../middlewares/unkey-ratelimit.middleware';
+// import {unkeyRatelimit} from '../middlewares/unkey-ratelimit.middleware';
 
 const SYSTEM_PROMPT =
   'You are a concise, helpful assistant for a sign-language translation app. ' +
@@ -87,8 +87,9 @@ export const geminiChatFunctions = () => {
 
   const app = express();
   app.use(cors());
-  app.use(appCheckVerification);
-  app.use(unkeyRatelimit('api.chatbot-gemini', 120, '30m'));
+  // app.use(appCheckVerification);
+  // TODO: Re-enable ratelimiting if needed
+  // app.use(unkeyRatelimit('api.chatbot-gemini', 120, '30m'));
   app.options('*', optionsRequest);
 
   app.post(['/', '/api/chatbot-gemini'], async (req, res) => {

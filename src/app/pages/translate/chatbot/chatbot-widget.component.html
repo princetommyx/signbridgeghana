@@ -1,45 +1,59 @@
-<div class="chatbot-root" [class.open]="isOpen">
-  <ion-button class="chatbot-trigger" (click)="toggle()" shape="round" color="primary" [attr.aria-expanded]="isOpen">
-    {{ isOpen ? 'Close chat' : 'Ask AI assistant' }}
-  </ion-button>
+<div class="chatbot-container" [class.open]="isOpen">
+  <!-- Trigger Button -->
+  <button class="chat-trigger" (click)="toggle()">
+    @if (isOpen) {
+      <span class="icon">✕</span>
+    } @else {
+      <span class="icon">✨</span>
+    }
+  </button>
 
-  @if (isOpen) {
-    <section class="chatbot-panel" aria-label="Gemini assistant chat panel">
-      <header class="chatbot-header">
-        <h2>AI Assistant</h2>
-        <p>Powered by Gemini</p>
-      </header>
+  <!-- Chat Window -->
+  <div class="chat-window">
+    <div class="chat-header">
+      <h3>AI Assistant 🇬🇭</h3>
+      <p>Powered by Gemini 1.5 Flash</p>
+    </div>
 
-      <div class="chatbot-messages" #messagesList>
-        @for (message of messages; track $index) {
-          <article
-            class="chatbot-message"
-            [class.user]="message.role === 'user'"
-            [class.assistant]="message.role === 'assistant'">
-            <p>{{ message.text }}</p>
-          </article>
-        }
+    <div class="messages-list" #messagesList>
+      @for (msg of messages; track $index) {
+        <div class="message-group" [class.user]="msg.role === 'user'">
+          <div class="message-bubble">
+            {{ stripDictionaryLink(msg.text) }}
+          </div>
 
-        @if (isSending) {
-          <article class="chatbot-message assistant typing">
-            <p>Thinking...</p>
-          </article>
-        }
-      </div>
-
-      @if (errorMessage) {
-        <p class="chatbot-error">{{ errorMessage }}</p>
+          <!-- Special Dictionary Reference Button -->
+          @if (msg.role === 'assistant' && getDictionaryLink(msg.text); as link) {
+            <button class="dictionary-ref-btn" (click)="$event.stopPropagation(); goToDictionary(link)">
+              <span class="btn-icon">📚</span>
+              View "{{ link }}" in Dictionary
+            </button>
+          }
+        </div>
       }
 
-      <div class="chatbot-composer">
-        <textarea
-          rows="2"
-          [(ngModel)]="inputText"
-          (keydown)="onKeydown($event)"
-          placeholder="Ask anything about translation, signs, or usage..."
-          [disabled]="isSending"></textarea>
-        <ion-button (click)="send()" [disabled]="!canSend">Send</ion-button>
-      </div>
-    </section>
-  }
+      @if (isSending) {
+        <div class="message-group">
+          <div class="message-bubble typing"><span></span><span></span><span></span></div>
+        </div>
+      }
+
+      @if (errorMessage) {
+        <div class="error-banner">
+          {{ errorMessage }}
+        </div>
+      }
+    </div>
+
+    <div class="chat-input">
+      <textarea
+        [(ngModel)]="inputText"
+        placeholder="How do I sign 'Hello'?"
+        (keydown)="onKeydown($event)"
+        [disabled]="isSending"></textarea>
+      <button class="send-btn" [disabled]="!canSend" (click)="send()">
+        <span class="icon">↗</span>
+      </button>
+    </div>
+  </div>
 </div>
