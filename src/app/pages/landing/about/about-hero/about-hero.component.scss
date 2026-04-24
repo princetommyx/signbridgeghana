@@ -1,8 +1,10 @@
 @use '../../../../../theme/breakpoints' as breakpoints;
 
 :host {
+  display: block;
+  padding: 80px 24px;
   @media #{breakpoints.$breakpoint-gt-sm} {
-    padding: 200px 50px !important;
+    padding: 160px 64px !important;
   }
 }
 
@@ -10,46 +12,63 @@
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
-  gap: 32px;
-
+  gap: 48px;
   align-items: center;
   margin: auto;
-
   max-width: 1200px;
 
   @media #{breakpoints.$breakpoint-lt-md} {
     grid-auto-flow: row;
+    gap: 32px;
   }
 }
 
 h1 {
-  font-size: 3em;
-
-  @media #{breakpoints.$breakpoint-lt-md} {
-    font-size: 2.5em;
-  }
-
-  @media #{breakpoints.$breakpoint-lt-sm} {
-    font-size: 2em;
-  }
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0;
 
   span {
-    color: var(--ion-color-primary-accessible-text);
+    color: var(--ion-color-primary);
+    background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
 p {
-  font-size: 1.25em;
-  line-height: 1.5em;
-  color: var(--ion-color-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 450;
+  line-height: 1.6;
+  color: #475569;
+  margin-top: 24px;
+
+  @media (prefers-color-scheme: dark) {
+    color: #cbd5e1;
+  }
+
+  body.dark & {
+    color: #cbd5e1;
+  }
 }
 
 img {
   width: 100%;
-  border-radius: 16px;
-  border: 1px solid var(--ion-color-light);
-}
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 
-ion-button {
-  text-transform: none;
+  @media (prefers-color-scheme: dark) {
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  body.dark & {
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
 }

@@ -59,7 +59,7 @@
     "about": {
       "hero": {
         "title": "Traduce entre más de 40 idiomas de señas y hablados en tiempo real.",
-        "img": "Ejemplo de traducción en vivo entre el lenguaje de señas americano y el inglés"
+        "img": "Ejemplo de traducción en vivo entre el lenguaje de señas de Ghana y el inglés"
       },
       "direction": {
         "spoken-to-signed": "Traducir de lenguajes hablados a lenguajes de señas",
@@ -175,6 +175,22 @@
   "language-selector": {
     "label": "Cambiar idioma o región"
   },
+  "signedLanguagesShort": {
+    "ase": "Ghana 🇬🇭",
+    "hps": "Ghana 🇬🇭",
+    "mre": "Ghana 🇬🇭",
+    "psd": "Ghana 🇬🇭",
+    "lsv": "Ghana 🇬🇭",
+    "yds": "Ghana 🇬🇭"
+  },
+  "signedLanguages": {
+    "ase": "Ghana Sign Language 🇬🇭",
+    "hps": "Ghana Sign Language 🇬🇭",
+    "mre": "Ghana Sign Language 🇬🇭",
+    "psd": "Ghana Sign Language 🇬🇭",
+    "lsv": "Ghana Sign Language 🇬🇭",
+    "yds": "Ghana Sign Language 🇬🇭"
+  },
   "settings": {
     "detectSign": "Detectar señal",
     "drawVideo": "Dibujar vídeo",
@@ -236,6 +252,9 @@
     }
   },
   "to": "{{a}} → {{b}}",
+  "languages": {
+    "en": "Text"
+  },
   "languages.spoken": "Todas",
   "countries.signed": "Todas"
 }

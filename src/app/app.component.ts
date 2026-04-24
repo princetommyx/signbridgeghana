@@ -12,6 +12,7 @@ import {getUrlParams} from './core/helpers/url';
 import * as CookieConsent from 'vanilla-cookieconsent';
 import {ConsentStatus, ConsentType, FirebaseAnalytics} from '@capacitor-firebase/analytics';
 import {MediaMatcher} from '@angular/cdk/layout';
+import {Store} from '@ngxs/store';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +36,8 @@ export class AppComponent implements AfterViewInit {
     this.updateToolbarColor();
     this.setPageKeyboardClass();
   }
+
+  private store = inject(Store);
 
   async ngAfterViewInit() {
     if (Capacitor.isNativePlatform()) {

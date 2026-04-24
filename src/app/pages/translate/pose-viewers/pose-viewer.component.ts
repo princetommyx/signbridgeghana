@@ -19,7 +19,7 @@ export abstract class BasePoseViewerComponent extends BaseComponent implements O
 
   readonly poseEl = viewChild<ElementRef<HTMLPoseViewerElement>>('poseViewer');
 
-  background: string = '';
+  background: string = 'white';
 
   // Using cache and MediaRecorder for older browsers, and safari
   mimeTypes = ['video/webm; codecs:vp9', 'video/webm; codecs:vp8', 'video/webm', 'video/mp4', 'video/ogv'];
@@ -37,20 +37,6 @@ export abstract class BasePoseViewerComponent extends BaseComponent implements O
   static isCustomElementDefined = false;
 
   async ngOnInit() {
-    // Some browsers videos can't have a transparent background
-    const isTransparencySupported =
-      isChrome && // transparency is currently not supported in firefox and safari
-      !PlayableVideoEncoder.isSupported(); // alpha is not yet supported in chrome VideoEncoder
-    // TODO check if alpha is supported in Video Muxer
-    if (!isTransparencySupported) {
-      // Make the video background the same as the parent element's background
-      const el = document.querySelector('app-signed-language-output');
-      if (el) {
-        // el does not exist during testing
-        this.background = getComputedStyle(el).backgroundColor;
-      }
-    }
-
     await this.definePoseViewerElement();
   }
 

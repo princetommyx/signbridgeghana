@@ -11,11 +11,6 @@ export class TranslationService {
 
   signedLanguages = [
     'ase', // Ghana Sign Language
-    'hps', // Ghana Sign Language
-    'mre', // Ghana Sign Language
-    'psd', // Ghana Sign Language
-    'lsv', // Ghana Sign Language
-    'yds', // Ghana Sign Language
   ];
 
   spokenLanguages = [

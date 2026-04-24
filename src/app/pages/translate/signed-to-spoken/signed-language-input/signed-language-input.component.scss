@@ -1,17 +1,30 @@
 ion-toolbar {
   --background: transparent;
-  height: 5em;
+  height: auto;
+  padding: 16px 0 24px;
 }
 
 ion-title {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
 
   ion-fab-button {
-    margin: auto;
-    --box-shadow: none;
+    --background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+    --background-activated: #4338ca;
+    --border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    --box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    &:active {
+      transform: scale(0.9);
+    }
 
     ion-icon {
-      font-size: 5em;
+      font-size: 32px;
+      color: white;
     }
   }
 }

@@ -1,24 +1,30 @@
 :host {
   display: flex;
-  align-items: end;
-  font-size: 1.2em;
-  gap: 8px;
+  align-items: center;
+  font-size: 1.4em;
+  gap: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 a {
   display: flex;
-  align-items: end;
-  color: unset;
+  align-items: center;
+  color: #0f172a;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: #f8fafc;
+  }
 }
 
 img {
-  height: 1em;
+  height: 1.2em;
   display: block;
-}
-
-.nagish-logo {
-  img {
-    height: 1em;
-  }
 }

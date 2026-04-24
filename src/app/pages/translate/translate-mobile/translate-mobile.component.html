@@ -6,8 +6,13 @@
 
 <ion-content [fullscreen]="true">
   <div class="mobile-shell">
-    <div class="mobile-aura mobile-aura-a"></div>
-    <div class="mobile-aura mobile-aura-b"></div>
+    <div class="status-hero">
+      <div class="status-indicator">
+        <span class="dot"></span>
+        <span class="text">Live AI Interpreter</span>
+      </div>
+      <h2>{{ (spokenToSigned$ | async) ? 'Text & Speech to Sign' : 'Sign to Speech & Text' }}</h2>
+    </div>
 
     <section class="mobile-stage" [class.video-stage]="!spokenToSigned">
       @if (spokenToSigned) {

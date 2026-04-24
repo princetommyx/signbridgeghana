@@ -237,5 +237,24 @@
   },
   "to": "{{a}} → {{b}}",
   "languages.spoken": "Összes",
-  "countries.signed": "Összes"
+  "countries.signed": "Összes",
+  "languages": {
+    "en": "Text"
+  },
+  "signedLanguagesShort": {
+    "ase": "Ghana 🇬🇭",
+    "hps": "Ghana 🇬🇭",
+    "mre": "Ghana 🇬🇭",
+    "psd": "Ghana 🇬🇭",
+    "lsv": "Ghana 🇬🇭",
+    "yds": "Ghana 🇬🇭"
+  },
+  "signedLanguages": {
+    "ase": "Ghana Sign Language 🇬🇭",
+    "hps": "Ghana Sign Language 🇬🇭",
+    "mre": "Ghana Sign Language 🇬🇭",
+    "psd": "Ghana Sign Language 🇬🇭",
+    "lsv": "Ghana Sign Language 🇬🇭",
+    "yds": "Ghana Sign Language 🇬🇭"
+  }
 }

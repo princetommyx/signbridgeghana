@@ -1,7 +1,7 @@
 <app-language-selector
   [flags]="true"
   [hasLanguageDetection]="false"
-  [languages]="translation.signedLanguages"
+  [languages]="['ase']"
   [language]="signedLanguage$ | async"
   translationKey="signedLanguagesShort"
   (languageChange)="setSignedLanguage($event)"></app-language-selector>

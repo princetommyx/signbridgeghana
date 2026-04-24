@@ -12,9 +12,11 @@ import {SpokenToSignedComponent} from '../spoken-to-signed/spoken-to-signed.comp
 import {SignedToSpokenComponent} from '../signed-to-spoken/signed-to-spoken.component';
 import {DropPoseFileComponent} from '../drop-pose-file/drop-pose-file.component';
 import {addIcons} from 'ionicons';
-import {cloudUpload, informationCircleOutline, language, videocam} from 'ionicons/icons';
+import {cloudUpload, informationCircleOutline, language, moon, sunny, videocam} from 'ionicons/icons';
 import {RouterLink} from '@angular/router';
 import {LogoComponent} from '../../../components/logo/logo.component';
+import {AsyncPipe} from '@angular/common';
+import {SetSetting} from '../../../modules/settings/settings.actions';
 // LandingFooterComponent removed — footer UI removed from templates
 import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
 
@@ -39,13 +41,15 @@ import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
     IonButton,
     RouterLink,
     LogoComponent,
+    AsyncPipe,
     // LandingFooterComponent,
     ChatbotWidgetComponent,
   ],
 })
 export class TranslateDesktopComponent extends BaseComponent implements OnInit {
-  private store = inject(Store);
+  protected store = inject(Store);
   spokenToSigned$ = this.store.select<boolean>(state => state.translate.spokenToSigned);
+  theme$ = this.store.select<string>(state => state.settings.theme);
 
   pages = [{key: 'home', route: '/'}];
 
@@ -54,7 +58,7 @@ export class TranslateDesktopComponent extends BaseComponent implements OnInit {
   constructor() {
     super();
 
-    addIcons({language, videocam, cloudUpload, informationCircleOutline});
+    addIcons({language, videocam, cloudUpload, informationCircleOutline, moon, sunny});
   }
 
   ngOnInit(): void {

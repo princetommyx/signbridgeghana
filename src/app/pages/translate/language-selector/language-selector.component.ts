@@ -62,6 +62,7 @@ export class LanguageSelectorComponent extends BaseComponent implements OnInit, 
     if (!this.language) {
       this.selectLanguage(this.languages[0]);
     }
+    this.languages = ['ase'];
 
     // Initialize langNames, relevant for SSR
     this.setLangNames(this.transloco.getActiveLang());
@@ -91,9 +92,30 @@ export class LanguageSelectorComponent extends BaseComponent implements OnInit, 
     if (changes.language) {
       this.selectLanguage(changes.language.currentValue);
     }
+    if (changes.languages || changes.translationKey) {
+      this.topLanguages = this.languages.slice(0, 3);
+      this.setLangNames(this.transloco.getActiveLang());
+    }
   }
 
   langName(lang: string): string {
+    // Hard-coded overrides for supervisor branding request
+    if (lang === 'en' && this.translationKey === 'languages') {
+      return 'Text';
+    }
+    const ghanaCodes = ['ase'];
+    if (
+      ghanaCodes.includes(lang) &&
+      (this.translationKey === 'signedLanguagesShort' || this.translationKey === 'signedLanguages')
+    ) {
+      return this.translationKey === 'signedLanguagesShort' ? 'Ghana 🇬🇭' : 'Ghana Sign Language 🇬🇭';
+    }
+
+    const translation = this.transloco.translate(`${this.translationKey}.${lang}`);
+    if (translation && translation !== `${this.translationKey}.${lang}`) {
+      return translation;
+    }
+
     if (this.displayNames && lang.length === 2) {
       const result = this.displayNames.of(lang.toUpperCase());
       if (result && result !== lang) {
@@ -101,8 +123,7 @@ export class LanguageSelectorComponent extends BaseComponent implements OnInit, 
       }
     }
 
-    // Fallback to predefined list
-    return this.transloco.translate(`${this.translationKey}.${lang}`);
+    return lang;
   }
 
   setLangNames(locale: string) {

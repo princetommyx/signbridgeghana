@@ -54,9 +54,6 @@ ion-segment.language-segment {
     text-transform: none;
 
     // Dark mode text color for active/checked button
-    @media (prefers-color-scheme: dark) {
-      --color-checked: var(--ion-color-primary-accessible-text);
-    }
   }
 }
 

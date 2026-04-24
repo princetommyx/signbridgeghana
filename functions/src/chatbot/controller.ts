@@ -11,7 +11,8 @@ import {unkeyRatelimit} from '../middlewares/unkey-ratelimit.middleware';
 
 const SYSTEM_PROMPT =
   'You are a concise, helpful assistant for a sign-language translation app. ' +
-  'Keep answers practical, clear, and respectful. Prefer short paragraphs and bullet points when useful.';
+  'Keep answers practical, clear, and respectful. Prefer short paragraphs and bullet points when useful. ' +
+  'You are powered by Gemini, a large language model from Google.';
 
 type ChatRole = 'user' | 'assistant';
 
@@ -94,48 +95,80 @@ export const geminiChatFunctions = () => {
     const {history, userMessage, context} = parseBody(req);
 
     const model = 'gemini-2.0-flash';
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiApiKey.value()}`;
-    const contents = [
-      ...history.map(message => ({
-        role: message.role === 'assistant' ? 'model' : 'user',
+    const apiKey = geminiApiKey.value();
+
+    if (!apiKey) {
+      console.error('GEMINI_API_KEY is not set');
+      throw new httpErrors.InternalServerError('AI configuration is missing');
+    }
+
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+    // Ensure roles alternate and are correctly mapped
+    const contents = [];
+    let lastRole: string | null = null;
+
+    for (const message of history) {
+      const role = message.role === 'assistant' ? 'model' : 'user';
+      if (role === lastRole) continue; // Skip consecutive identical roles
+      contents.push({
+        role,
         parts: [{text: message.text}],
-      })),
-      {role: 'user', parts: [{text: userMessage}]},
-    ];
-
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        systemInstruction: {
-          parts: [{text: buildSystemPrompt(context)}],
-        },
-        contents,
-        generationConfig: {
-          temperature: 0.5,
-          maxOutputTokens: 600,
-        },
-      }),
-    });
-
-    if (!response.ok) {
-      const details = await response.text();
-      throw new httpErrors.BadGateway(`Gemini API request failed: ${details}`);
+      });
+      lastRole = role;
     }
 
-    const json = (await response.json()) as any;
-    const candidate = json.candidates?.[0];
-    const parts = candidate?.content?.parts ?? [];
-    const reply = parts
-      .map((part: {text?: string}) => part.text ?? '')
-      .join('\n')
-      .trim();
-
-    if (!reply) {
-      throw new httpErrors.BadGateway('Gemini API returned an empty response');
+    // Always add the current user message at the end
+    if (lastRole === 'user' && contents.length > 0) {
+      // If the last message was also from user, we can either merge or skip.
+      // Gemini usually prefers alternating. We'll append to the last user message or just replace it.
+      contents[contents.length - 1].parts[0].text += `\n\n${userMessage}`;
+    } else {
+      contents.push({role: 'user', parts: [{text: userMessage}]});
     }
 
-    res.json({reply});
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          systemInstruction: {
+            parts: [{text: buildSystemPrompt(context)}],
+          },
+          contents,
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 800,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`Gemini API error (${response.status}):`, errorText);
+        throw new httpErrors.BadGateway(`Gemini API failed: ${response.statusText}`);
+      }
+
+      const json = (await response.json()) as any;
+      const candidate = json.candidates?.[0];
+
+      if (candidate?.finishReason === 'SAFETY') {
+        return res.json({reply: 'I apologize, but I cannot answer that question due to safety filters.'});
+      }
+
+      const reply = candidate?.content?.parts?.[0]?.text?.trim();
+
+      if (!reply) {
+        console.error('Gemini API returned empty response:', JSON.stringify(json));
+        throw new httpErrors.BadGateway('Empty response from AI assistant');
+      }
+
+      res.json({reply});
+    } catch (error: any) {
+      if (httpErrors.isHttpError(error)) throw error;
+      console.error('Unexpected error in Gemini chat:', error);
+      throw new httpErrors.InternalServerError('An unexpected error occurred');
+    }
   });
 
   app.use(errorMiddleware);

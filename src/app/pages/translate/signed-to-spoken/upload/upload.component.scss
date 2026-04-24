@@ -15,10 +15,6 @@ p {
   font-weight: 400;
   margin-top: 8px;
   margin-bottom: 26px;
-
-  @media (prefers-color-scheme: dark) {
-    color: map.get(mat.$m2-dark-theme-foreground-palette, secondary-text);
-  }
 }
 
 button {

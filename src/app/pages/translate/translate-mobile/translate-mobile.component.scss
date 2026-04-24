@@ -4,65 +4,160 @@ app-signed-language-output {
   height: 100%;
 }
 
-.mobile-toolbar {
-  --background: rgba(252, 252, 252, 0.72);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+ion-footer {
+  --background: transparent;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 12px 16px env(safe-area-inset-bottom);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 
-  @media (prefers-color-scheme: dark) {
-    --background: rgba(20, 24, 30, 0.76);
+  .mobile-footer-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.mobile-toolbar {
+  --background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  --padding-start: 16px;
+  --padding-end: 8px;
+
+  .theme-toggle {
+    --color: #4f46e5;
+    margin-right: 8px;
   }
 }
 
 .mobile-shell {
-  background:
-    radial-gradient(circle at 12% 10%, rgba(30, 200, 186, 0.2), transparent 46%),
-    radial-gradient(circle at 88% 20%, rgba(255, 174, 88, 0.22), transparent 48%),
-    linear-gradient(145deg, #f8fcff 0%, #f4f8ff 55%, #f8fff8 100%);
+  background: radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.1), transparent 50%), #f8fafc;
   display: flex;
+  flex-direction: column;
   min-height: 100%;
   overflow: hidden;
-  padding: 12px;
+  padding: 16px;
   position: relative;
+}
 
-  @media (prefers-color-scheme: dark) {
-    background:
-      radial-gradient(circle at 10% 12%, rgba(30, 200, 186, 0.16), transparent 50%),
-      radial-gradient(circle at 90% 18%, rgba(255, 174, 88, 0.16), transparent 52%),
-      linear-gradient(145deg, #101620 0%, #101a2c 55%, #0d1718 100%);
+.status-hero {
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+      animation: pulseGreen 2s infinite;
+    }
+
+    .text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
 }
 
 .mobile-aura {
-  border-radius: 999px;
-  filter: blur(24px);
+  border-radius: 50%;
+  filter: blur(80px);
   position: absolute;
   pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
 }
 
 .mobile-aura-a {
-  animation: pulseMobileA 8s ease-in-out infinite;
-  background: rgba(44, 202, 189, 0.26);
-  height: 170px;
-  left: -70px;
-  top: 68px;
-  width: 170px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.4), transparent 70%);
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  left: -50px;
+  animation: floatMobileA 15s ease-in-out infinite;
 }
 
 .mobile-aura-b {
-  animation: pulseMobileB 10s ease-in-out infinite;
-  background: rgba(255, 176, 89, 0.24);
-  height: 180px;
-  right: -72px;
-  top: 130px;
-  width: 180px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+  width: 250px;
+  height: 250px;
+  bottom: 20%;
+  right: -50px;
+  animation: floatMobileB 18s ease-in-out infinite;
+}
+
+@keyframes floatMobileA {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, 30px) scale(1.1);
+  }
+}
+
+@keyframes floatMobileB {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-30px, -20px) scale(1.2);
+  }
 }
 
 .mobile-stage {
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(20, 42, 74, 0.15);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(24, 43, 70, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   min-height: 100%;
   overflow: hidden;
   position: relative;
@@ -70,66 +165,46 @@ app-signed-language-output {
   z-index: 1;
 
   &::before {
-    background: linear-gradient(102deg, rgba(0, 156, 170, 0.9), rgba(255, 162, 76, 0.85), rgba(34, 121, 255, 0.82));
-    background-size: 200% 100%;
-    animation: gradientShift 3.8s ease-in-out infinite;
     content: '';
-    height: 4px;
-    left: 0;
     position: absolute;
-    right: 0;
     top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #8b5cf6, #06b6d4);
     z-index: 5;
   }
-
-  &.video-stage {
-    border-color: rgba(192, 117, 21, 0.24);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background: rgba(12, 19, 31, 0.85);
-    border-color: rgba(148, 172, 220, 0.22);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.36);
-  }
-}
-
-ion-footer.signed-to-spoken {
-  box-shadow: none;
 }
 
 ion-footer {
   --background: transparent;
 
   .mobile-footer-inner {
-    background: rgba(255, 255, 255, 0.84);
-    border-top: 1px solid rgba(21, 44, 79, 0.12);
-    box-shadow: 0 -10px 22px rgba(22, 39, 67, 0.12);
-    padding: 8px 8px 10px;
-
-    @media (prefers-color-scheme: dark) {
-      background: rgba(12, 19, 31, 0.9);
-      border-top-color: rgba(151, 173, 215, 0.2);
-      box-shadow: 0 -10px 22px rgba(0, 0, 0, 0.28);
-    }
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 12px 16px;
+    border-radius: 20px 20px 0 0;
   }
 }
 
 @keyframes pulseMobileA {
   0%,
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0) scale(1);
   }
   50% {
-    transform: translate3d(16px, -12px, 0);
+    transform: translate(20px, -20px) scale(1.1);
   }
 }
 
 @keyframes pulseMobileB {
   0%,
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0) scale(1);
   }
   50% {
-    transform: translate3d(-15px, 12px, 0);
+    transform: translate(-20px, 20px) scale(1.1);
   }
 }

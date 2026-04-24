@@ -25,12 +25,36 @@
 @forward '@ionic/angular/css/text-transformation.css';
 @forward '@ionic/angular/css/flex-utils.css';
 
+ion-button {
+  --border-radius: 14px;
+  --box-shadow: none;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &.toolbar-cta {
+    --border-radius: 99px;
+    --padding-start: 24px;
+    --padding-end: 24px;
+  }
+}
+
 ion-button.circle-icon {
   /* To make the button circle */
-  --padding-start: 5.4px;
-  --padding-end: var(--padding-start);
+  --border-radius: 50%;
+  --padding-start: 8px;
+  --padding-end: 8px;
 
   &[size='small'] {
-    --padding-start: 1.95px;
+    --padding-start: 4px;
+    --padding-end: 4px;
   }
 }

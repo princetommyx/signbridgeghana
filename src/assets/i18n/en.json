@@ -2,6 +2,9 @@
   "languages.spoken": "All",
   "countries.signed": "All",
   "to": "{{a}} → {{b}}",
+  "languages": {
+    "en": "Text"
+  },
   "keyboard": {
     "ctrl": "Ctrl",
     "shift": "Shift"
@@ -61,7 +64,7 @@
       "title": "About Us",
       "hero": {
         "title": "Translate between 40+ signed and spoken languages in real-time.",
-        "img": "Example of live translation between American Sign Language and English"
+        "img": "Example of live translation between Ghana Sign Language and English"
       },
       "direction": {
         "spoken-to-signed": "Translate from spoken to signed languages",
@@ -175,6 +178,14 @@
     "psd": "Ghana 🇬🇭",
     "lsv": "Ghana 🇬🇭",
     "yds": "Ghana 🇬🇭"
+  },
+  "signedLanguages": {
+    "ase": "Ghana Sign Language 🇬🇭",
+    "hps": "Ghana Sign Language 🇬🇭",
+    "mre": "Ghana Sign Language 🇬🇭",
+    "psd": "Ghana Sign Language 🇬🇭",
+    "lsv": "Ghana Sign Language 🇬🇭",
+    "yds": "Ghana Sign Language 🇬🇭"
   },
   "text-to-speech": {
     "play": "Listen",

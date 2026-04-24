@@ -59,7 +59,7 @@
     "about": {
       "hero": {
         "title": "Terjemahake antarane 40+ basa sing ditandatangani lan diucapake kanthi wektu nyata.",
-        "img": "Conto terjemahan langsung antarane American Sign Language lan Inggris"
+        "img": "Conto terjemahan langsung antarane Ghana Sign Language lan Inggris"
       },
       "direction": {
         "spoken-to-signed": "Terjemahake saka basa lisan menyang basa teken",
@@ -237,5 +237,24 @@
   },
   "to": "{{a}} → {{b}}",
   "languages.spoken": "Kabeh",
-  "countries.signed": "Kabeh"
+  "countries.signed": "Kabeh",
+  "languages": {
+    "en": "Text"
+  },
+  "signedLanguagesShort": {
+    "ase": "Ghana 🇬🇭",
+    "hps": "Ghana 🇬🇭",
+    "mre": "Ghana 🇬🇭",
+    "psd": "Ghana 🇬🇭",
+    "lsv": "Ghana 🇬🇭",
+    "yds": "Ghana 🇬🇭"
+  },
+  "signedLanguages": {
+    "ase": "Ghana Sign Language 🇬🇭",
+    "hps": "Ghana Sign Language 🇬🇭",
+    "mre": "Ghana Sign Language 🇬🇭",
+    "psd": "Ghana Sign Language 🇬🇭",
+    "lsv": "Ghana Sign Language 🇬🇭",
+    "yds": "Ghana Sign Language 🇬🇭"
+  }
 }

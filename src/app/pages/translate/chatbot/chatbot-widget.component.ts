@@ -60,7 +60,7 @@ export class ChatbotWidgetComponent {
     this.isSending = true;
     this.scrollToBottom();
 
-    this.chatService.sendMessage({messages: this.messages, userMessage: userText, context}).subscribe({
+    this.chatService.sendMessage({messages: this.messages.slice(0, -1), userMessage: userText, context}).subscribe({
       next: reply => {
         this.messages.push({role: 'assistant', text: reply});
         this.isSending = false;

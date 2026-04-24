@@ -4,6 +4,20 @@
 @forward './ionic';
 @forward './ionic-variables';
 
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -27,13 +41,6 @@ body {
 
   --app-divider-color: rgba(0, 0, 0, 0.12);
   --app-tinted-background-color: #fafafa; /* map-get(mat.$grey-palette, 50); */
-
-  @media (prefers-color-scheme: dark) {
-    background-color: black !important;
-
-    --app-divider-color: rgba(255, 255, 255, 0.12);
-    --app-tinted-background-color: #151515;
-  }
 
   &.embed {
     ion-header,
@@ -63,4 +70,10 @@ ion-content::part(scroll) {
 
 ion-header ion-button {
   text-transform: none;
+}
+
+pose-viewer {
+  --background: white !important;
+  --color: #0f172a !important;
+  background: white !important;
 }

@@ -18,6 +18,8 @@ export interface SettingsStateModel {
   appearance: string;
 
   poseViewer: PoseViewerSetting;
+
+  theme: 'light' | 'dark' | 'system';
 }
 
 const initialState: SettingsStateModel = {
@@ -31,9 +33,11 @@ const initialState: SettingsStateModel = {
   drawPose: true,
   drawSignWriting: false,
 
-  poseViewer: 'pose',
+  poseViewer: 'pose', // Always use skeleton as default
 
   appearance: '#ffffff',
+
+  theme: 'light',
 };
 
 @Injectable()

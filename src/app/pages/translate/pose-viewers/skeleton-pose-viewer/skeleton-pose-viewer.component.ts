@@ -19,7 +19,12 @@ export class SkeletonPoseViewerComponent extends BasePoseViewerComponent impleme
     fromEvent(pose, 'firstRender$')
       .pipe(
         tap(async () => {
-          const poseCanvas = pose.shadowRoot.querySelector('canvas');
+          const poseCanvas = pose.shadowRoot.querySelector('canvas') as HTMLCanvasElement;
+          const ctx = poseCanvas.getContext('2d');
+          if (ctx) {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, poseCanvas.width, poseCanvas.height);
+          }
           pose.currentTime = 0; // Force time back to 0
 
           this.playback.updateTiming(pose.currentTime, pose.duration);

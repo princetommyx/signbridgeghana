@@ -101,7 +101,7 @@ export class TranslateState implements NgxsOnInit {
 
     context.dispatch(ChangeTranslation);
 
-    // Reset video whenever viewer setting changes
+    // Reset video whenever viewer setting or theme changes
     this.poseViewerSetting$.pipe(tap(() => context.dispatch(new SetSignedLanguageVideo(null)))).subscribe();
   }
 

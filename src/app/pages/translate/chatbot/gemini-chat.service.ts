@@ -30,7 +30,7 @@ export class GeminiChatService {
 
   sendMessage(request: GeminiChatRequest): Observable<string> {
     return this.http
-      .post<GeminiChatResponse>('https://sign.mt/api/chatbot-gemini', {
+      .post<GeminiChatResponse>('/api/chatbot-gemini', {
         ...request,
       })
       .pipe(map(response => response.reply));

@@ -1,12 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {TranslateDesktopComponent} from '../translate-desktop/translate-desktop.component';
-import {IonContent, IonFooter, IonHeader, IonToolbar} from '@ionic/angular/standalone';
+import {IonButton, IonButtons, IonContent, IonFooter, IonHeader, IonIcon, IonToolbar} from '@ionic/angular/standalone';
 import {SpokenLanguageInputComponent} from '../spoken-to-signed/spoken-language-input/spoken-language-input.component';
 import {SignedLanguageOutputComponent} from '../spoken-to-signed/signed-language-output/signed-language-output.component';
 import {SignedLanguageInputComponent} from '../signed-to-spoken/signed-language-input/signed-language-input.component';
 import {LanguageSelectorsComponent} from '../language-selectors/language-selectors.component';
 import {VideoModule} from '../../../components/video/video.module';
 import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
+import {addIcons} from 'ionicons';
+import {moon, sunny} from 'ionicons/icons';
+import {Store} from '@ngxs/store';
+import {SetSetting} from '../../../modules/settings/settings.actions';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-translate-mobile',
@@ -17,12 +22,21 @@ import {ChatbotWidgetComponent} from '../chatbot/chatbot-widget.component';
     IonHeader,
     IonToolbar,
     IonFooter,
+    IonButtons,
+    IonButton,
+    IonIcon,
     SignedLanguageOutputComponent,
     SignedLanguageInputComponent,
     SpokenLanguageInputComponent,
     VideoModule,
     LanguageSelectorsComponent,
     ChatbotWidgetComponent,
+    AsyncPipe,
   ],
 })
-export class TranslateMobileComponent extends TranslateDesktopComponent {}
+export class TranslateMobileComponent extends TranslateDesktopComponent {
+  constructor() {
+    super();
+    addIcons({moon, sunny});
+  }
+}

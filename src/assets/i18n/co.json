@@ -59,7 +59,7 @@
     "about": {
       "hero": {
         "title": "Traduce trà più di 40 lingue firmate è parlate in tempu reale.",
-        "img": "Esempiu di traduzzione in diretta trà Lingua di i Signi Americana è Inglese"
+        "img": "Esempiu di traduzzione in diretta trà Lingua di i Signi Ghanaa è Inglese"
       },
       "direction": {
         "spoken-to-signed": "Traduce da lingua parlata à lingua signata",
@@ -237,5 +237,24 @@
   },
   "to": "{{a}} → {{b}}",
   "languages.spoken": "Tuttu",
-  "countries.signed": "Tuttu"
+  "countries.signed": "Tuttu",
+  "languages": {
+    "en": "Text"
+  },
+  "signedLanguagesShort": {
+    "ase": "Ghana 🇬🇭",
+    "hps": "Ghana 🇬🇭",
+    "mre": "Ghana 🇬🇭",
+    "psd": "Ghana 🇬🇭",
+    "lsv": "Ghana 🇬🇭",
+    "yds": "Ghana 🇬🇭"
+  },
+  "signedLanguages": {
+    "ase": "Ghana Sign Language 🇬🇭",
+    "hps": "Ghana Sign Language 🇬🇭",
+    "mre": "Ghana Sign Language 🇬🇭",
+    "psd": "Ghana Sign Language 🇬🇭",
+    "lsv": "Ghana Sign Language 🇬🇭",
+    "yds": "Ghana Sign Language 🇬🇭"
+  }
 }

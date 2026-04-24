@@ -59,5 +59,5 @@ export class HttpLoader implements TranslocoLoader {
 
 export const translocoScopes = {
   provide: TRANSLOCO_SCOPE,
-  useValue: ['', 'countries', 'languages', 'signedLanguagesShort'],
+  useValue: [''],
 };

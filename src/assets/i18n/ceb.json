@@ -59,7 +59,7 @@
     "about": {
       "hero": {
         "title": "Paghubad tali sa 40+ nga gipirmahan ug gisulti nga mga sinultian sa tinuud nga oras.",
-        "img": "Pananglitan sa live nga paghubad tali sa American Sign Language ug English"
+        "img": "Pananglitan sa live nga paghubad tali sa Ghana Sign Language ug English"
       },
       "direction": {
         "spoken-to-signed": "Paghubad gikan sa sinultihan ngadto sa signed nga mga pinulongan",
@@ -237,5 +237,24 @@
   },
   "to": "{{a}} → {{b}}",
   "languages.spoken": "Tanan",
-  "countries.signed": "Tanan"
+  "countries.signed": "Tanan",
+  "languages": {
+    "en": "Text"
+  },
+  "signedLanguagesShort": {
+    "ase": "Ghana 🇬🇭",
+    "hps": "Ghana 🇬🇭",
+    "mre": "Ghana 🇬🇭",
+    "psd": "Ghana 🇬🇭",
+    "lsv": "Ghana 🇬🇭",
+    "yds": "Ghana 🇬🇭"
+  },
+  "signedLanguages": {
+    "ase": "Ghana Sign Language 🇬🇭",
+    "hps": "Ghana Sign Language 🇬🇭",
+    "mre": "Ghana Sign Language 🇬🇭",
+    "psd": "Ghana Sign Language 🇬🇭",
+    "lsv": "Ghana Sign Language 🇬🇭",
+    "yds": "Ghana Sign Language 🇬🇭"
+  }
 }
