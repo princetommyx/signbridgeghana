@@ -1,16 +1,5 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="translate-toolbar">
-    <ion-buttons slot="primary">
-      <ion-button
-        routerLink="/about"
-        queryParamsHandling="preserve"
-        color="primary"
-        shape="round"
-        fill="solid"
-        class="toolbar-cta">
-        {{ 'landing.about.title' | transloco }}
-      </ion-button>
-    </ion-buttons>
     <ion-title>
       <app-logo [text]="'translate.logo' | transloco" />
     </ion-title>
@@ -87,6 +76,4 @@
       <app-send-feedback class="feedback-slot" />
     </div>
   </div>
-
-  <app-chatbot-widget></app-chatbot-widget>
 </ion-content>

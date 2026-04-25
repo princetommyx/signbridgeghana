@@ -1,17 +1,35 @@
+<ion-menu contentId="mobile-translate-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-list-header lines="full">
+        <ion-label>Pages</ion-label>
+      </ion-list-header>
+      <ion-menu-toggle>
+        @for (page of pages; track page.key) {
+          <ion-item [routerLink]="page.route" queryParamsHandling="preserve">
+            <ion-label>{{ 'landing.' + page.key + '.title' | transloco }}</ion-label>
+          </ion-item>
+        }
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-header [translucent]="true">
   <ion-toolbar class="mobile-toolbar">
     <ion-buttons slot="start">
-      @for (page of pages; track page.key) {
-        <ion-button [routerLink]="page.route" queryParamsHandling="preserve" color="dark" fill="clear">
-          {{ 'landing.' + page.key + '.title' | transloco }}
-        </ion-button>
-      }
+      <ion-menu-button auto-hide="true" color="dark"></ion-menu-button>
     </ion-buttons>
     <app-language-selectors />
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" id="mobile-translate-content">
   <div class="mobile-shell">
     <div class="status-hero">
       <div class="status-indicator">
@@ -41,5 +59,3 @@
     }
   </div>
 </ion-footer>
-
-<app-chatbot-widget></app-chatbot-widget>

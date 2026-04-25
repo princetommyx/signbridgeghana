@@ -25,6 +25,26 @@ export const routes: Routes = [
     children: [{path: '', component: AboutComponent}],
   },
   {
+    path: 'settings',
+    loadComponent: () => import('./pages/landing/landing.component').then(m => m.LandingComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent),
+      },
+    ],
+  },
+  {
+    path: 'support',
+    loadComponent: () => import('./pages/landing/landing.component').then(m => m.LandingComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/landing/support/support.component').then(m => m.SupportComponent),
+      },
+    ],
+  },
+  {
     path: 'playground',
     loadComponent: () => import('./pages/playground/playground.component').then(m => m.PlaygroundComponent),
   },
@@ -50,7 +70,6 @@ export const routes: Routes = [
         path: 'translate',
         redirectTo: '',
       },
-      {path: 'settings', loadChildren: () => import('./pages/settings/settings.routes').then(m => m.routes)},
     ],
   },
   {path: '**', component: NotFoundComponent},

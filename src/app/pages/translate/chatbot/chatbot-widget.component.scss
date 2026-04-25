@@ -5,6 +5,11 @@
   z-index: 1000;
   font-family: 'Outfit', sans-serif;
 
+  @media (max-width: 768px) {
+    bottom: 90px;
+    right: 16px;
+  }
+
   &.open {
     .chat-window {
       opacity: 1;

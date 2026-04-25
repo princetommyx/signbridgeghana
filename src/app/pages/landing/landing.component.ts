@@ -59,6 +59,8 @@ export class LandingComponent {
     {key: 'home', route: '/'},
     {key: 'dictionary', route: '/dictionary'},
     {key: 'about', route: '/about'},
+    {key: 'settings', route: '/settings'},
+    {key: 'support', route: '/support'},
   ];
 
   constructor() {

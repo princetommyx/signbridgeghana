@@ -4,6 +4,7 @@ import {LandingComponent} from './landing.component';
 import {LicensesComponent} from './licenses/licenses.component';
 import {TermsComponent} from './terms/terms.component';
 import {PrivacyComponent} from './privacy/privacy.component';
+import {SupportComponent} from './support/support.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,7 @@ export const routes: Routes = [
       {path: 'terms', component: TermsComponent},
       {path: 'privacy', component: PrivacyComponent},
       {path: 'licenses', component: LicensesComponent},
+      {path: 'support', component: SupportComponent},
     ],
   },
 ];

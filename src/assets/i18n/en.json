@@ -106,6 +106,12 @@
     },
     "home": {
       "title": "Home"
+    },
+    "support": {
+      "title": "Support"
+    },
+    "settings": {
+      "title": "Settings"
     }
   },
   "playground": {

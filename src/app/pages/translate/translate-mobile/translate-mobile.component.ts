@@ -1,6 +1,22 @@
 import {Component, inject} from '@angular/core';
 import {TranslateDesktopComponent} from '../translate-desktop/translate-desktop.component';
-import {IonButton, IonButtons, IonContent, IonFooter, IonHeader, IonIcon, IonToolbar} from '@ionic/angular/standalone';
+import {
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonFooter,
+  IonHeader,
+  IonIcon,
+  IonToolbar,
+  IonMenu,
+  IonMenuButton,
+  IonMenuToggle,
+  IonList,
+  IonListHeader,
+  IonItem,
+  IonLabel,
+  IonTitle,
+} from '@ionic/angular/standalone';
 import {SpokenLanguageInputComponent} from '../spoken-to-signed/spoken-language-input/spoken-language-input.component';
 import {SignedLanguageOutputComponent} from '../spoken-to-signed/signed-language-output/signed-language-output.component';
 import {SignedLanguageInputComponent} from '../signed-to-spoken/signed-language-input/signed-language-input.component';
@@ -27,6 +43,14 @@ import {TranslocoPipe} from '@jsverse/transloco';
     IonButtons,
     IonButton,
     IonIcon,
+    IonMenu,
+    IonMenuButton,
+    IonMenuToggle,
+    IonList,
+    IonListHeader,
+    IonItem,
+    IonLabel,
+    IonTitle,
     SignedLanguageOutputComponent,
     SignedLanguageInputComponent,
     SpokenLanguageInputComponent,

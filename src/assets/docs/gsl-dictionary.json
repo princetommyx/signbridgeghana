@@ -1,5 +1,41 @@
 [
   {
+    "word": "Hello",
+    "description": "Place the hand on the forehead and move it away from the head in a brief salute.",
+    "category": "GSL Greetings",
+    "source": "GSL Dictionary 3rd Ed."
+  },
+  {
+    "word": "Thank you",
+    "description": "Place the fingertips of your flat hand on your chin, then move your hand forward and down.",
+    "category": "GSL Greetings",
+    "source": "GSL Dictionary 3rd Ed."
+  },
+  {
+    "word": "Teacher",
+    "description": "Hold both 'O' hands near your temples, move them forward, and then add the 'person' marker.",
+    "category": "GSL Vocabulary",
+    "source": "GSL Dictionary 3rd Ed."
+  },
+  {
+    "word": "Student",
+    "description": "Mime taking information from your open palm and putting it into your brain, followed by the 'person' marker.",
+    "category": "GSL Vocabulary",
+    "source": "GSL Dictionary 3rd Ed."
+  },
+  {
+    "word": "Ghana",
+    "description": "Place the right flat hand on top of the head, then move it down to rest on the chest.",
+    "category": "GSL Vocabulary",
+    "source": "GSL Dictionary 3rd Ed."
+  },
+  {
+    "word": "Water",
+    "description": "Form a 'W' with your hand and tap the index finger against your chin twice.",
+    "category": "GSL Vocabulary",
+    "source": "GSL Dictionary 3rd Ed."
+  },
+  {
     "word": "Uncle Aunt",
     "description": "Shake the wrist of the \u201cU\u201d hand at Shake the wrist of the \u201cA\u201d hand at the side of your head. your cheek.",
     "category": "GSL Vocabulary",

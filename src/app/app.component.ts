@@ -13,12 +13,13 @@ import * as CookieConsent from 'vanilla-cookieconsent';
 import {ConsentStatus, ConsentType, FirebaseAnalytics} from '@capacitor-firebase/analytics';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {Store} from '@ngxs/store';
+import {ChatbotWidgetComponent} from './pages/translate/chatbot/chatbot-widget.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [IonApp, IonRouterOutlet],
+  imports: [IonApp, IonRouterOutlet, ChatbotWidgetComponent],
 })
 export class AppComponent implements AfterViewInit {
   private meta = inject(Meta);

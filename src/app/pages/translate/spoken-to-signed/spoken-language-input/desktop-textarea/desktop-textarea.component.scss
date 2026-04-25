@@ -33,11 +33,10 @@ textarea#desktop {
   padding: 2px; // Default textarea padding
 
   span {
-    pointer-events: all;
+    pointer-events: none;
 
     &.hover {
       border-bottom: 1px solid var(--ion-color-warning-tint);
-      pointer-events: none;
     }
   }
 }

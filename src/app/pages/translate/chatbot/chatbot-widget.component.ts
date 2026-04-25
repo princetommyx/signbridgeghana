@@ -62,16 +62,24 @@ export class ChatbotWidgetComponent {
     this.isSending = true;
     this.scrollToBottom();
 
-    this.chatService.sendMessage({messages: this.messages.slice(0, -1), userMessage: userText, context}).subscribe({
+    const botMessage: GeminiChatMessage = {role: 'assistant', text: ''};
+    this.messages.push(botMessage);
+
+    this.chatService.sendMessage({messages: this.messages.slice(0, -2), userMessage: userText, context}).subscribe({
       next: reply => {
-        this.messages.push({role: 'assistant', text: reply});
-        this.isSending = false;
+        botMessage.text = reply;
         this.scrollToBottom();
       },
       error: err => {
         this.errorMessage = err.message || 'Unable to get a response right now. Please try again in a moment.';
         this.isSending = false;
+        if (!botMessage.text) {
+          this.messages.pop(); // Remove empty bot message on error
+        }
         this.scrollToBottom();
+      },
+      complete: () => {
+        this.isSending = false;
       },
     });
   }

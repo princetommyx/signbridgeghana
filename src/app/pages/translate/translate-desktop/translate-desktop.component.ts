@@ -54,6 +54,9 @@ export class TranslateDesktopComponent extends BaseComponent implements OnInit {
   pages = [
     {key: 'home', route: '/'},
     {key: 'dictionary', route: '/dictionary'},
+    {key: 'about', route: '/about'},
+    {key: 'settings', route: '/settings'},
+    {key: 'support', route: '/support'},
   ];
 
   spokenToSigned: boolean;

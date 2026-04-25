@@ -1,76 +1,92 @@
 <ion-content>
-  <div class="dictionary-container">
-    <header class="dictionary-header">
-      <div class="badge">Ghana Sign Language</div>
-      <h1>Official GSL Dictionary</h1>
-      <p>Explore the vocabulary and grammar of Ghanaian Sign Language.</p>
-    </header>
-
-    <div class="dictionary-actions">
-      <div class="search-box">
-        <input
-          type="text"
-          [(ngModel)]="searchQuery"
-          (keyup.enter)="onSearch()"
-          placeholder="Search for a sign (e.g. 'Hello', 'Ghana')..." />
-        <button class="search-btn" (click)="onSearch()">Search</button>
-      </div>
-    </div>
-
-    <!-- Search Results Section -->
-    <div class="results-section" *ngIf="isSearching">
-      <div class="results-header">
-        <h2>Results for "{{ searchQuery }}"</h2>
-        <button class="clear-btn" (click)="clearSearch()">Clear results</button>
-      </div>
-
-      <div class="results-grid" *ngIf="searchResults.length > 0; else noResults">
-        <div class="sign-card" *ngFor="let sign of searchResults">
-          <div class="sign-image" *ngIf="sign.image">
-            <img [src]="sign.image" [alt]="sign.word" />
+  <div class="dictionary-wrapper">
+    <!-- Main Search Section -->
+    <div class="search-section">
+      <div class="search-container">
+        <div class="search-bar">
+          <ion-icon name="search-outline" class="search-icon"></ion-icon>
+          <input
+            type="text"
+            [ngModel]="searchQuery$ | async"
+            (input)="onSearchChange($event)"
+            placeholder="Search for a word (e.g., hello, teacher)..." />
+          <div class="mic-container">
+            <ion-icon name="mic-outline"></ion-icon>
           </div>
-          <div class="sign-meta">
-            <span class="sign-category">{{ sign.category }}</span>
-            <span class="sign-source">{{ sign.source }}</span>
+        </div>
+      </div>
+
+      <div class="try-these">
+        <span class="label">TRY THESE</span>
+        <div class="chips-container">
+          <button class="chip" (click)="setSearchQuery('Hello')">Hello</button>
+          <button class="chip" (click)="setSearchQuery('Thank you')">Thank you</button>
+          <button class="chip" (click)="setSearchQuery('Teacher')">Teacher</button>
+          <button class="chip" (click)="setSearchQuery('Student')">Student</button>
+          <button class="chip" (click)="setSearchQuery('Ghana')">Ghana</button>
+          <button class="chip" (click)="setSearchQuery('Water')">Water</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Index Section -->
+    <div class="index-section">
+      <div class="index-header">
+        <div class="title-with-icon">
+          <ion-icon name="book-outline"></ion-icon>
+          <h2>DICTIONARY INDEX</h2>
+        </div>
+        <div class="entry-count" *ngIf="filteredSigns$ | async as signs">{{ signs.length }} ENTRIES</div>
+      </div>
+
+      <div class="alphabet-grid">
+        <button
+          *ngFor="let char of alphabet"
+          class="letter-btn"
+          [class.active]="(selectedLetter$ | async) === char"
+          (click)="filterByLetter(char)">
+          {{ char }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Grid -->
+    <div class="results-container">
+      <div class="results-grid" *ngIf="filteredSigns$ | async as signs">
+        <div class="word-card" *ngFor="let sign of signs | slice: 0 : displayedLimit">
+          <div class="card-top">
+            <h3 class="word-title">{{ sign.word | uppercase }}</h3>
+            <span class="variant-badge">1 VAR</span>
           </div>
-          <div class="sign-word">{{ sign.word }}</div>
-          <p class="sign-desc">{{ sign.description }}</p>
+          <div class="card-bottom">
+            <div class="page-ref">
+              <ion-icon name="book-outline"></ion-icon>
+              <span>PAGE {{ sign.pageNumber }}</span>
+            </div>
+            <div class="category-tag">{{ sign.category }}</div>
+          </div>
+
+          <!-- Detailed content (shown on hover/click in future) -->
+          <div class="card-expand" *ngIf="sign.image">
+            <img [src]="sign.image" [alt]="sign.word" loading="lazy" />
+            <p>{{ sign.description }}</p>
+          </div>
+        </div>
+
+        <div class="no-results" *ngIf="signs.length === 0">
+          <div class="empty-state">
+            <div class="icon">🔍</div>
+            <h3>No entries found</h3>
+            <p>Try searching for a different word or clear your filters.</p>
+          </div>
         </div>
       </div>
 
-      <ng-template #noResults>
-        <div class="no-results-card">
-          <div class="icon">🔍</div>
-          <h3>No matches found</h3>
-          <p>Try searching for common words like "Hello", "Family", or "Ghana".</p>
-        </div>
-      </ng-template>
+      <!-- Infinite Scroll -->
+      <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more signs...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     </div>
-
-    <div class="pdf-viewer-section" *ngIf="!isSearching">
-      <div class="card premium-card">
-        <div class="card-icon">📚</div>
-        <div class="card-content">
-          <h3>Full GSL Dictionary (3rd Edition)</h3>
-          <p>
-            Access the complete 425MB official dictionary PDF. Note: This is a large file and may take a moment to load.
-          </p>
-          <a href="/assets/docs/gsl-dictionary.pdf" target="_blank" class="cta-button">
-            View PDF Dictionary
-            <span class="icon">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <section class="quick-links" *ngIf="!isSearching">
-      <h2>Browse by Category</h2>
-      <div class="categories-grid">
-        <div class="category-item" (click)="searchQuery = 'Greetings'; onSearch()">Greetings</div>
-        <div class="category-item" (click)="searchQuery = 'Education'; onSearch()">Education</div>
-        <div class="category-item" (click)="searchQuery = 'Family'; onSearch()">Family</div>
-        <div class="category-item" (click)="searchQuery = 'Health'; onSearch()">Health</div>
-      </div>
-    </section>
   </div>
 </ion-content>
