@@ -110,7 +110,7 @@ Check our guidelines for [contributing][contributing] and then explore our issue
 ## Technology Stack
 
 - **Frontend**: Angular, Ionic, Material Design
-- **3D Rendering**: **Pose-Viewer**, Three.js, Model Viewer
+- **3D Rendering**: **Pose-Viewer** (Skeletons), **Model-Viewer** & **Three.js** (3D Character Avatars)
 - **AI/ML**: MediaPipe (Holistic), TensorFlow.js, Google Gemini
 - **Backend**: Firebase (Hosting, Storage, Functions)
 - **Languages**: TypeScript, HTML, SCSS/CSS, Python (ML processing)
