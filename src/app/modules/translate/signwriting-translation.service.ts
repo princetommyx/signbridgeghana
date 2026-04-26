@@ -86,7 +86,7 @@ export class SignWritingTranslationService {
     // const query = new URLSearchParams({from, to, text});
     // return this.http.get<TranslationResponse>(`https://sign.mt/api/${direction}?${query}`);'
 
-    const url = 'https://sign.mt/api/spoken-text-to-signwriting';
+    const url = '/api/spoken-text-to-signwriting';
     const body = {
       data: {
         texts: sentences.map(s => s.trim()),

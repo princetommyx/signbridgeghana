@@ -95,7 +95,7 @@ export const geminiChatFunctions = () => {
   app.post(['/', '/api/chatbot-gemini'], async (req, res) => {
     const {history, userMessage, context} = parseBody(req);
 
-    const model = 'gemini-2.0-flash';
+    const model = 'gemini-flash-latest';
     const apiKey = geminiApiKey.value();
 
     if (!apiKey) {
@@ -164,7 +164,7 @@ export const geminiChatFunctions = () => {
         throw new httpErrors.BadGateway('Empty response from AI assistant');
       }
 
-      res.json({reply});
+      return res.json({reply});
     } catch (error: any) {
       if (httpErrors.isHttpError(error)) throw error;
       console.error('Unexpected error in Gemini chat:', error);

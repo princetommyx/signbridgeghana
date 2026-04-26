@@ -40,13 +40,13 @@ export class TranslationService {
     const params = new URLSearchParams();
     params.set('lang', language);
     params.set('text', text);
-    const url = 'https://sign.mt/api/text-normalization?' + params.toString();
+    const url = '/api/text-normalization?' + params.toString();
 
     return this.http.get<{text: string}>(url).pipe(map(response => response.text));
   }
 
   describeSignWriting(fsw: string): Observable<string> {
-    const url = 'https://sign.mt/api/signwriting-description';
+    const url = '/api/signwriting-description';
 
     return this.http
       .post<{result: {description: string}}>(url, {data: {fsw}})
@@ -54,7 +54,7 @@ export class TranslationService {
   }
 
   translateSpokenToSigned(text: string, spokenLanguage: string, signedLanguage: string): string {
-    const api = 'https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose';
+    const api = '/api/v1/spoken-text-to-signed-pose';
     return `${api}?text=${encodeURIComponent(text)}&spoken=${spokenLanguage}&signed=${signedLanguage}`;
   }
 }

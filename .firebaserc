@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "signbridge-577bb"
-  }
+  },
+  "targets": {
+    "signbridge-577bb": {
+      "hosting": {
+        "translate": [
+          "signbridge-577bb"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
